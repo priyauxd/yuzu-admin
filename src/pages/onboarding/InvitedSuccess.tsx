@@ -54,7 +54,7 @@ export default function InvitedSuccess() {
             </ul>
           </div>
 
-          <button className="w-full bg-yuzu-900 hover:bg-yuzu-800 text-white font-semibold py-3 rounded-xl transition-colors">
+          <button className="w-full bg-yuzu-400 hover:bg-yuzu-300 text-yuzu-900 font-semibold py-3 rounded-full transition-colors">
             Open yuzu App
           </button>
         </div>

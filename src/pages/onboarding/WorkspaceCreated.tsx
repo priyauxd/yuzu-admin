@@ -47,7 +47,7 @@ export default function WorkspaceCreated() {
 
       <button
         onClick={() => navigate('/onboarding/invite-team')}
-        className="w-full flex items-center justify-center gap-2 bg-yuzu-900 hover:bg-yuzu-800 text-white font-semibold py-3 rounded-xl transition-colors"
+        className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-yuzu-900 font-semibold py-3 rounded-full transition-colors"
       >
         Invite Your Team
         <ArrowRight className="w-4 h-4" />

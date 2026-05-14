@@ -122,7 +122,7 @@ export default function Plan() {
 
       <button
         onClick={handleContinue}
-        className="w-full flex items-center justify-center gap-2 bg-yuzu-900 hover:bg-yuzu-800 text-white font-semibold py-3 rounded-xl transition-colors mt-6"
+        className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-yuzu-900 font-semibold py-3 rounded-full transition-colors mt-6"
       >
         Continue to Payment
         <ArrowRight className="w-4 h-4" />

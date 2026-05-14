@@ -111,7 +111,7 @@ export default function InvitedVerify() {
 
                 <button
                   type="submit"
-                  className="w-full bg-yuzu-900 hover:bg-yuzu-800 text-white font-semibold py-3 rounded-xl transition-colors"
+                  className="w-full bg-yuzu-400 hover:bg-yuzu-300 text-yuzu-900 font-semibold py-3 rounded-full transition-colors"
                 >
                   Join Workspace
                 </button>
