@@ -120,7 +120,7 @@ export default function Payment() {
         <button
           type="submit"
           disabled={processing}
-          className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 disabled:bg-neutral-200 disabled:text-neutral-400 text-yuzu-900 font-semibold py-3 rounded-full transition-colors mt-2"
+          className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 disabled:bg-neutral-200 disabled:text-neutral-400 text-white font-semibold py-3 rounded-full shadow-[0_4px_14px_rgba(246,196,83,0.45)] transition-colors mt-2"
         >
           {processing ? (
             <>

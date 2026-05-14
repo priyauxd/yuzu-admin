@@ -89,7 +89,7 @@ export default function InviteTeam() {
               </p>
               <button
                 onClick={() => navigate('/')}
-                className="inline-flex items-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-yuzu-900 font-semibold px-8 py-3 rounded-full transition-colors"
+                className="inline-flex items-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-white font-semibold px-8 py-3 rounded-full shadow-[0_4px_14px_rgba(246,196,83,0.45)] transition-colors"
               >
                 Go to Dashboard
                 <ArrowRight className="w-4 h-4" />
@@ -176,7 +176,7 @@ export default function InviteTeam() {
 
               <button
                 onClick={handleSend}
-                className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-yuzu-900 font-semibold py-3 rounded-full transition-colors"
+                className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-white font-semibold py-3 rounded-full shadow-[0_4px_14px_rgba(246,196,83,0.45)] transition-colors"
               >
                 <Send className="w-4 h-4" />
                 Send Invites

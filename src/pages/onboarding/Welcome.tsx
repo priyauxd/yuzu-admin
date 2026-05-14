@@ -35,7 +35,7 @@ export default function Welcome() {
 
           <button
             onClick={() => navigate('/onboarding/email')}
-            className="inline-flex items-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-yuzu-900 font-semibold px-8 py-3.5 rounded-full text-lg transition-colors shadow-md"
+            className="inline-flex items-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-white font-semibold px-8 py-3.5 rounded-full text-lg transition-colors shadow-[0_4px_14px_rgba(246,196,83,0.45)]"
           >
             Get Started Free
             <ArrowRight className="w-5 h-5" />

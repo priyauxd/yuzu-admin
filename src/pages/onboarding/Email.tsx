@@ -68,7 +68,7 @@ export default function Email() {
 
         <button
           type="submit"
-          className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-yuzu-900 font-semibold py-3 rounded-full transition-colors"
+          className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-white font-semibold py-3 rounded-full transition-colors shadow-[0_4px_14px_rgba(246,196,83,0.45)]"
         >
           Continue
           <ArrowRight className="w-4 h-4" />
