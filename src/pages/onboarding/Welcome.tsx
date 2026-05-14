@@ -19,9 +19,11 @@ export default function Welcome() {
           </div>
 
           <h1 className="text-4xl sm:text-5xl font-bold text-brand-text tracking-tight leading-tight mb-4">
-            Team messaging,
+            One App.
             <br />
-            <span className="text-yuzu-900">built for work.</span>
+            <span className="text-yuzu-600">Every Conversation.</span>
+            <br />
+            Anywhere your team works.
           </h1>
 
           <p className="text-brand-text-secondary text-lg mb-10 max-w-md mx-auto">
