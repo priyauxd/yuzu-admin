@@ -52,15 +52,15 @@ export default function VerifyOtp() {
       stepLabels={STEP_LABELS}
     >
       <div className="text-center mb-8">
-        <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center mx-auto mb-4">
-          <ShieldCheck className="w-7 h-7 text-green-600" />
+        <div className="w-14 h-14 rounded-2xl bg-yuzu-50 flex items-center justify-center mx-auto mb-4 border border-yuzu-300/30">
+          <ShieldCheck className="w-7 h-7 text-yuzu-900" />
         </div>
-        <h1 className="text-2xl font-bold text-slate-900 mb-2">
+        <h1 className="text-2xl font-bold text-brand-text mb-2">
           Check your email
         </h1>
-        <p className="text-slate-500">
+        <p className="text-brand-text-secondary">
           We sent a 6-digit code to{' '}
-          <span className="font-medium text-slate-700">{email}</span>
+          <span className="font-medium text-brand-text">{email}</span>
         </p>
       </div>
 
@@ -76,7 +76,7 @@ export default function VerifyOtp() {
               value={digit}
               onChange={(e) => handleChange(i, e.target.value)}
               onKeyDown={(e) => handleKeyDown(i, e)}
-              className="w-12 h-14 text-center text-xl font-semibold rounded-xl border border-slate-200 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-12 h-14 text-center text-xl font-semibold rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             />
           ))}
         </div>
@@ -86,15 +86,15 @@ export default function VerifyOtp() {
 
         <button
           type="submit"
-          className="w-full bg-yuzu-400 hover:bg-yuzu-500 text-white font-semibold py-3 rounded-xl transition-colors"
+          className="w-full bg-yuzu-900 hover:bg-yuzu-800 text-white font-semibold py-3 rounded-xl transition-colors"
         >
           Verify &amp; Continue
         </button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-slate-400">
+      <p className="mt-6 text-center text-sm text-brand-text-secondary">
         Didn&apos;t receive the code?{' '}
-        <button className="text-yuzu-600 hover:text-yuzu-700 font-medium">
+        <button className="text-yuzu-900 hover:text-yuzu-800 font-medium">
           Resend
         </button>
       </p>

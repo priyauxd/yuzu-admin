@@ -65,10 +65,10 @@ export default function Plan() {
       stepLabels={STEP_LABELS}
     >
       <div className="text-center mb-8">
-        <h1 className="text-2xl font-bold text-slate-900 mb-2">
+        <h1 className="text-2xl font-bold text-brand-text mb-2">
           Choose your plan
         </h1>
-        <p className="text-slate-500">
+        <p className="text-brand-text-secondary">
           All plans include a 14-day free trial. Cancel anytime.
         </p>
       </div>
@@ -80,36 +80,36 @@ export default function Plan() {
             onClick={() => setSelected(plan.id)}
             className={`w-full text-left p-4 rounded-xl border-2 transition-all relative ${
               selected === plan.id
-                ? 'border-yuzu-400 bg-yuzu-50/50 shadow-sm'
-                : 'border-slate-200 bg-white hover:border-slate-300'
+                ? 'border-yuzu-400 bg-yuzu-50 shadow-sm'
+                : 'border-brand-border bg-white hover:border-neutral-300'
             }`}
           >
             {plan.popular && (
-              <span className="absolute -top-2.5 right-4 bg-yuzu-400 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+              <span className="absolute -top-2.5 right-4 bg-yuzu-900 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
                 Popular
               </span>
             )}
             <div className="flex items-start justify-between mb-2">
               <div>
-                <h3 className="font-semibold text-slate-900">{plan.name}</h3>
-                <p className="text-sm text-slate-500">{plan.description}</p>
+                <h3 className="font-semibold text-brand-text">{plan.name}</h3>
+                <p className="text-sm text-brand-text-secondary">{plan.description}</p>
               </div>
               <div className="text-right shrink-0 ml-4">
-                <span className="text-2xl font-bold text-slate-900">
+                <span className="text-2xl font-bold text-brand-text">
                   ${plan.price}
                 </span>
-                <span className="text-sm text-slate-400">/user/mo</span>
+                <span className="text-sm text-brand-text-secondary">/user/mo</span>
               </div>
             </div>
             <ul className="mt-3 space-y-1.5">
               {plan.features.map((f) => (
                 <li
                   key={f}
-                  className="flex items-center gap-2 text-sm text-slate-600"
+                  className="flex items-center gap-2 text-sm text-brand-text-tertiary"
                 >
                   <Check
                     className={`w-3.5 h-3.5 shrink-0 ${
-                      selected === plan.id ? 'text-yuzu-500' : 'text-slate-300'
+                      selected === plan.id ? 'text-yuzu-900' : 'text-neutral-300'
                     }`}
                   />
                   {f}
@@ -122,13 +122,13 @@ export default function Plan() {
 
       <button
         onClick={handleContinue}
-        className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-500 text-white font-semibold py-3 rounded-xl transition-colors mt-6"
+        className="w-full flex items-center justify-center gap-2 bg-yuzu-900 hover:bg-yuzu-800 text-white font-semibold py-3 rounded-xl transition-colors mt-6"
       >
         Continue to Payment
         <ArrowRight className="w-4 h-4" />
       </button>
 
-      <p className="mt-3 text-center text-xs text-slate-400">
+      <p className="mt-3 text-center text-xs text-brand-text-secondary">
         Billed monthly in AED. Pro-rata for mid-cycle additions.
       </p>
     </OnboardingLayout>

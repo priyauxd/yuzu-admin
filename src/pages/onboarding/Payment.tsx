@@ -36,20 +36,20 @@ export default function Payment() {
       stepLabels={STEP_LABELS}
     >
       <div className="text-center mb-8">
-        <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center mx-auto mb-4">
-          <CreditCard className="w-7 h-7 text-purple-600" />
+        <div className="w-14 h-14 rounded-2xl bg-yuzu-50 flex items-center justify-center mx-auto mb-4 border border-yuzu-300/30">
+          <CreditCard className="w-7 h-7 text-yuzu-900" />
         </div>
-        <h1 className="text-2xl font-bold text-slate-900 mb-2">
+        <h1 className="text-2xl font-bold text-brand-text mb-2">
           Payment details
         </h1>
-        <p className="text-slate-500">
+        <p className="text-brand-text-secondary">
           {plan.name} plan &middot; ${plan.price}/user/month
         </p>
       </div>
 
-      <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-6 flex items-start gap-2.5">
-        <Lock className="w-4 h-4 text-amber-600 mt-0.5 shrink-0" />
-        <p className="text-sm text-amber-800">
+      <div className="bg-yuzu-50 border border-yuzu-300/40 rounded-xl p-3 mb-6 flex items-start gap-2.5">
+        <Lock className="w-4 h-4 text-yuzu-900 mt-0.5 shrink-0" />
+        <p className="text-sm text-yuzu-900">
           Secured by Telr &middot; PCI DSS 4.0 compliant &middot; AED billing
         </p>
       </div>
@@ -66,19 +66,19 @@ export default function Payment() {
 
       <form onSubmit={handlePayment} className="space-y-4">
         <div>
-          <label htmlFor="cardName" className="block text-sm font-medium text-slate-700 mb-1.5">
+          <label htmlFor="cardName" className="block text-sm font-medium text-brand-text mb-1.5">
             Name on card
           </label>
           <input
             id="cardName"
             type="text"
             placeholder="Full name as on card"
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
           />
         </div>
 
         <div>
-          <label htmlFor="cardNumber" className="block text-sm font-medium text-slate-700 mb-1.5">
+          <label htmlFor="cardNumber" className="block text-sm font-medium text-brand-text mb-1.5">
             Card number
           </label>
           <input
@@ -86,13 +86,13 @@ export default function Payment() {
             type="text"
             placeholder="1234 5678 9012 3456"
             maxLength={19}
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
           />
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label htmlFor="expiry" className="block text-sm font-medium text-slate-700 mb-1.5">
+            <label htmlFor="expiry" className="block text-sm font-medium text-brand-text mb-1.5">
               Expiry date
             </label>
             <input
@@ -100,11 +100,11 @@ export default function Payment() {
               type="text"
               placeholder="MM/YY"
               maxLength={5}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             />
           </div>
           <div>
-            <label htmlFor="cvv" className="block text-sm font-medium text-slate-700 mb-1.5">
+            <label htmlFor="cvv" className="block text-sm font-medium text-brand-text mb-1.5">
               CVV
             </label>
             <input
@@ -112,7 +112,7 @@ export default function Payment() {
               type="text"
               placeholder="123"
               maxLength={4}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             />
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function Payment() {
         <button
           type="submit"
           disabled={processing}
-          className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-500 disabled:bg-yuzu-300 text-white font-semibold py-3 rounded-xl transition-colors mt-2"
+          className="w-full flex items-center justify-center gap-2 bg-yuzu-900 hover:bg-yuzu-800 disabled:bg-neutral-300 text-white font-semibold py-3 rounded-xl transition-colors mt-2"
         >
           {processing ? (
             <>
@@ -136,7 +136,7 @@ export default function Payment() {
         </button>
       </form>
 
-      <p className="mt-4 text-center text-xs text-slate-400">
+      <p className="mt-4 text-center text-xs text-brand-text-secondary">
         14-day free trial. You won&apos;t be charged today.
       </p>
     </OnboardingLayout>

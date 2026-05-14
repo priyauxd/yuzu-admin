@@ -56,19 +56,19 @@ export default function Profile() {
       stepLabels={STEP_LABELS}
     >
       <div className="text-center mb-8">
-        <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mx-auto mb-4">
-          <User className="w-7 h-7 text-blue-600" />
+        <div className="w-14 h-14 rounded-2xl bg-yuzu-50 flex items-center justify-center mx-auto mb-4 border border-yuzu-300/30">
+          <User className="w-7 h-7 text-yuzu-900" />
         </div>
-        <h1 className="text-2xl font-bold text-slate-900 mb-2">
+        <h1 className="text-2xl font-bold text-brand-text mb-2">
           Complete your profile
         </h1>
-        <p className="text-slate-500">Tell us a bit about yourself</p>
+        <p className="text-brand-text-secondary">Tell us a bit about yourself</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 mb-1.5">
+            <label htmlFor="firstName" className="block text-sm font-medium text-brand-text mb-1.5">
               First name
             </label>
             <input
@@ -76,7 +76,7 @@ export default function Profile() {
               type="text"
               value={form.firstName}
               onChange={(e) => update('firstName', e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
               placeholder="First"
               autoFocus
             />
@@ -85,7 +85,7 @@ export default function Profile() {
             )}
           </div>
           <div>
-            <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 mb-1.5">
+            <label htmlFor="lastName" className="block text-sm font-medium text-brand-text mb-1.5">
               Last name
             </label>
             <input
@@ -93,7 +93,7 @@ export default function Profile() {
               type="text"
               value={form.lastName}
               onChange={(e) => update('lastName', e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
               placeholder="Last"
             />
             {errors.lastName && (
@@ -103,14 +103,14 @@ export default function Profile() {
         </div>
 
         <div>
-          <label htmlFor="language" className="block text-sm font-medium text-slate-700 mb-1.5">
+          <label htmlFor="language" className="block text-sm font-medium text-brand-text mb-1.5">
             Preferred language
           </label>
           <select
             id="language"
             value={form.language}
             onChange={(e) => update('language', e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
+            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
           >
             {LANGUAGES.map((lang) => (
               <option key={lang.value} value={lang.value}>
@@ -121,14 +121,14 @@ export default function Profile() {
         </div>
 
         <div>
-          <label htmlFor="timezone" className="block text-sm font-medium text-slate-700 mb-1.5">
+          <label htmlFor="timezone" className="block text-sm font-medium text-brand-text mb-1.5">
             Timezone
           </label>
           <select
             id="timezone"
             value={form.timezone}
             onChange={(e) => update('timezone', e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
+            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
           >
             {TIMEZONES.map((tz) => (
               <option key={tz.value} value={tz.value}>
@@ -140,7 +140,7 @@ export default function Profile() {
 
         <button
           type="submit"
-          className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-500 text-white font-semibold py-3 rounded-xl transition-colors mt-2"
+          className="w-full flex items-center justify-center gap-2 bg-yuzu-900 hover:bg-yuzu-800 text-white font-semibold py-3 rounded-xl transition-colors mt-2"
         >
           Continue
           <ArrowRight className="w-4 h-4" />

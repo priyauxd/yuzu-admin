@@ -20,13 +20,13 @@ export default function InvitedVerify() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-yuzu-50 flex flex-col">
+    <div className="min-h-screen bg-brand-warm flex flex-col">
       <header className="px-6 py-5 flex items-center">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-yuzu-400 flex items-center justify-center">
-            <span className="text-white font-bold text-sm">Y</span>
+          <div className="w-8 h-8 rounded-lg bg-yuzu-900 flex items-center justify-center">
+            <span className="text-yuzu-400 font-bold text-sm">Y</span>
           </div>
-          <span className="font-semibold text-slate-900 text-lg">yuzu</span>
+          <span className="font-semibold text-brand-text text-lg">yuzu</span>
         </div>
       </header>
 
@@ -35,13 +35,13 @@ export default function InvitedVerify() {
           {step === 'choose' ? (
             <>
               <div className="text-center mb-8">
-                <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center mx-auto mb-4">
-                  <ShieldCheck className="w-7 h-7 text-green-600" />
+                <div className="w-14 h-14 rounded-2xl bg-yuzu-50 flex items-center justify-center mx-auto mb-4 border border-yuzu-300/30">
+                  <ShieldCheck className="w-7 h-7 text-yuzu-900" />
                 </div>
-                <h1 className="text-2xl font-bold text-slate-900 mb-2">
+                <h1 className="text-2xl font-bold text-brand-text mb-2">
                   Verify your identity
                 </h1>
-                <p className="text-slate-500">
+                <p className="text-brand-text-secondary">
                   Choose how you&apos;d like to verify
                 </p>
               </div>
@@ -49,12 +49,12 @@ export default function InvitedVerify() {
               <div className="space-y-3">
                 <button
                   onClick={() => handleVerify('uaepass')}
-                  className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-yuzu-400 hover:bg-yuzu-50/50 transition-all text-left"
+                  className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
                 >
                   <span className="text-2xl">🇦🇪</span>
                   <div>
-                    <h3 className="font-semibold text-slate-900">UAE Pass</h3>
-                    <p className="text-sm text-slate-500">
+                    <h3 className="font-semibold text-brand-text">UAE Pass</h3>
+                    <p className="text-sm text-brand-text-secondary">
                       Primary &middot; Instant verification
                     </p>
                   </div>
@@ -62,14 +62,14 @@ export default function InvitedVerify() {
 
                 <button
                   onClick={() => handleVerify('otp')}
-                  className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-slate-200 bg-white hover:border-yuzu-400 hover:bg-yuzu-50/50 transition-all text-left"
+                  className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
                 >
                   <span className="text-2xl">✉️</span>
                   <div>
-                    <h3 className="font-semibold text-slate-900">
+                    <h3 className="font-semibold text-brand-text">
                       Email OTP
                     </h3>
-                    <p className="text-sm text-slate-500">
+                    <p className="text-sm text-brand-text-secondary">
                       Fallback &middot; Code sent to your email
                     </p>
                   </div>
@@ -79,13 +79,13 @@ export default function InvitedVerify() {
           ) : (
             <>
               <div className="text-center mb-8">
-                <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mx-auto mb-4">
-                  <ShieldCheck className="w-7 h-7 text-blue-600" />
+                <div className="w-14 h-14 rounded-2xl bg-yuzu-50 flex items-center justify-center mx-auto mb-4 border border-yuzu-300/30">
+                  <ShieldCheck className="w-7 h-7 text-yuzu-900" />
                 </div>
-                <h1 className="text-2xl font-bold text-slate-900 mb-2">
+                <h1 className="text-2xl font-bold text-brand-text mb-2">
                   Set your display name
                 </h1>
-                <p className="text-slate-500">
+                <p className="text-brand-text-secondary">
                   This is how your team will see you
                 </p>
               </div>
@@ -94,7 +94,7 @@ export default function InvitedVerify() {
                 <div>
                   <label
                     htmlFor="displayName"
-                    className="block text-sm font-medium text-slate-700 mb-1.5"
+                    className="block text-sm font-medium text-brand-text mb-1.5"
                   >
                     Display name
                   </label>
@@ -104,14 +104,14 @@ export default function InvitedVerify() {
                     placeholder="Your name"
                     value={displayName}
                     onChange={(e) => setDisplayName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
                     autoFocus
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-yuzu-400 hover:bg-yuzu-500 text-white font-semibold py-3 rounded-xl transition-colors"
+                  className="w-full bg-yuzu-900 hover:bg-yuzu-800 text-white font-semibold py-3 rounded-xl transition-colors"
                 >
                   Join Workspace
                 </button>
@@ -121,7 +121,7 @@ export default function InvitedVerify() {
         </div>
       </main>
 
-      <footer className="px-6 py-4 text-center text-xs text-slate-400">
+      <footer className="px-6 py-4 text-center text-xs text-brand-text-secondary">
         &copy; 2026 yuzu.cx &middot; All rights reserved
       </footer>
     </div>

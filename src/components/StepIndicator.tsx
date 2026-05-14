@@ -24,9 +24,9 @@ export default function StepIndicator({
               <div
                 className={`
                   w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium shrink-0 transition-all
-                  ${isComplete ? 'bg-yuzu-400 text-white' : ''}
-                  ${isCurrent ? 'bg-yuzu-400 text-white ring-4 ring-yuzu-100' : ''}
-                  ${!isComplete && !isCurrent ? 'bg-slate-200 text-slate-400' : ''}
+                  ${isComplete ? 'bg-yuzu-900 text-white' : ''}
+                  ${isCurrent ? 'bg-yuzu-400 text-yuzu-900 ring-4 ring-yuzu-100' : ''}
+                  ${!isComplete && !isCurrent ? 'bg-neutral-200 text-neutral-400' : ''}
                 `}
               >
                 {isComplete ? <Check className="w-3.5 h-3.5" /> : step}
@@ -34,14 +34,14 @@ export default function StepIndicator({
               {step < totalSteps && (
                 <div
                   className={`flex-1 h-0.5 mx-1 transition-all ${
-                    isComplete ? 'bg-yuzu-400' : 'bg-slate-200'
+                    isComplete ? 'bg-yuzu-900' : 'bg-neutral-200'
                   }`}
                 />
               )}
             </div>
             <span
               className={`text-[11px] leading-tight text-center ${
-                isCurrent ? 'text-slate-700 font-medium' : 'text-slate-400'
+                isCurrent ? 'text-brand-text font-medium' : 'text-brand-text-secondary'
               }`}
             >
               {labels[i]}

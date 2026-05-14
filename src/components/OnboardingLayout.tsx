@@ -17,16 +17,16 @@ export default function OnboardingLayout({
   showSteps = true,
 }: OnboardingLayoutProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-yuzu-50 flex flex-col">
+    <div className="min-h-screen bg-brand-warm flex flex-col">
       <header className="px-6 py-5 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-yuzu-400 flex items-center justify-center">
-            <span className="text-white font-bold text-sm">Y</span>
+          <div className="w-8 h-8 rounded-lg bg-yuzu-900 flex items-center justify-center">
+            <span className="text-yuzu-400 font-bold text-sm">Y</span>
           </div>
-          <span className="font-semibold text-slate-900 text-lg">yuzu</span>
+          <span className="font-semibold text-brand-text text-lg">yuzu</span>
         </div>
         {showSteps && (
-          <span className="text-sm text-slate-400">
+          <span className="text-sm text-brand-text-secondary">
             Step {currentStep} of {totalSteps}
           </span>
         )}
@@ -46,7 +46,7 @@ export default function OnboardingLayout({
         <div className="w-full max-w-md">{children}</div>
       </main>
 
-      <footer className="px-6 py-4 text-center text-xs text-slate-400">
+      <footer className="px-6 py-4 text-center text-xs text-brand-text-secondary">
         &copy; 2026 yuzu.cx &middot; All rights reserved
       </footer>
     </div>
