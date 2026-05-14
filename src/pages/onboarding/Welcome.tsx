@@ -18,15 +18,19 @@ export default function Welcome() {
             Built for UAE businesses
           </div>
 
-          <h1 className="text-4xl sm:text-5xl font-bold text-brand-text tracking-tight leading-tight mb-4">
-            One App.
-            <br />
-            <span className="text-yuzu-600">Every Conversation.</span>
-            <br />
-            Anywhere your team works.
-          </h1>
+          <div className="mb-10">
+            <p className="text-2xl sm:text-3xl font-bold text-brand-text tracking-wide mb-1">
+              One App.
+            </p>
+            <h1 className="text-3xl sm:text-4xl font-bold text-yuzu-400 tracking-tight leading-none mb-2">
+              💬 Every Conversation.
+            </h1>
+            <p className="text-2xl sm:text-3xl font-bold text-brand-text">
+              Anywhere your team works.
+            </p>
+          </div>
 
-          <p className="text-brand-text-secondary text-lg mb-10 max-w-md mx-auto">
+          <p className="text-brand-text-secondary text-base mb-10 max-w-md mx-auto">
             Channels, voice notes, tasks, and AI — all in one workspace.
             Secure, fast, and designed for your team.
           </p>
