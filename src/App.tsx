@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Welcome from './pages/onboarding/Welcome'
 import Email from './pages/onboarding/Email'
 import VerifyOtp from './pages/onboarding/VerifyOtp'
@@ -13,7 +13,7 @@ import InvitedSuccess from './pages/onboarding/InvitedSuccess'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Admin onboarding flow */}
         <Route path="/" element={<Welcome />} />
@@ -33,6 +33,6 @@ export default function App() {
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
