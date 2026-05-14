@@ -9,6 +9,7 @@ import {
   Trash2,
   UserPlus,
 } from 'lucide-react'
+import Logo from '../../components/Logo'
 
 const ROLES = ['Member', 'Field Member', 'Support Agent', 'Ops Manager']
 
@@ -52,12 +53,7 @@ export default function InviteTeam() {
   return (
     <div className="min-h-screen bg-brand-warm flex flex-col">
       <header className="px-6 py-5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-yuzu-900 flex items-center justify-center">
-            <span className="text-yuzu-400 font-bold text-sm">Y</span>
-          </div>
-          <span className="font-semibold text-brand-text text-lg">yuzu</span>
-        </div>
+        <Logo />
       </header>
 
       <main className="flex-1 flex items-start justify-center px-6 py-8">
@@ -101,7 +97,7 @@ export default function InviteTeam() {
                 {invites.map((invite) => (
                   <div
                     key={invite.id}
-                    className="bg-white rounded-xl border border-brand-border p-3"
+                    className="bg-white rounded-2xl border border-brand-border p-3"
                   >
                     <div className="flex gap-2 mb-2">
                       <input
@@ -111,7 +107,7 @@ export default function InviteTeam() {
                         onChange={(e) =>
                           updateInvite(invite.id, 'email', e.target.value)
                         }
-                        className="flex-1 px-3 py-2 rounded-lg border border-brand-border bg-neutral-50 text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+                        className="flex-1 px-3 py-2 rounded-full border border-brand-border bg-neutral-50 text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
                       />
                       <button
                         onClick={() => removeInvite(invite.id)}
@@ -126,7 +122,7 @@ export default function InviteTeam() {
                         onChange={(e) =>
                           updateInvite(invite.id, 'role', e.target.value)
                         }
-                        className="flex-1 px-3 py-2 rounded-lg border border-brand-border bg-neutral-50 text-brand-text-tertiary text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
+                        className="flex-1 px-3 py-2 rounded-full border border-brand-border bg-neutral-50 text-brand-text-tertiary text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
                       >
                         {ROLES.map((role) => (
                           <option key={role} value={role}>
@@ -151,7 +147,7 @@ export default function InviteTeam() {
                               updateInvite(invite.id, 'method', method)
                             }
                             title={label}
-                            className={`p-2 rounded-lg border text-sm transition-all ${
+                            className={`p-2 rounded-full border text-sm transition-all ${
                               invite.method === method
                                 ? 'border-yuzu-400 bg-yuzu-50 text-yuzu-900'
                                 : 'border-brand-border bg-neutral-50 text-neutral-400 hover:text-neutral-600'
@@ -168,7 +164,7 @@ export default function InviteTeam() {
 
               <button
                 onClick={addRow}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border-2 border-dashed border-brand-border text-brand-text-secondary hover:border-neutral-300 hover:text-brand-text text-sm font-medium transition-colors mb-6"
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-full border-2 border-dashed border-brand-border text-brand-text-secondary hover:border-neutral-300 hover:text-brand-text text-sm font-medium transition-colors mb-6"
               >
                 <Plus className="w-4 h-4" />
                 Add another

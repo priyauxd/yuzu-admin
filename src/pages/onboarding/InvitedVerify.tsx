@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ShieldCheck } from 'lucide-react'
+import Logo from '../../components/Logo'
 
 export default function InvitedVerify() {
   const navigate = useNavigate()
@@ -22,12 +23,7 @@ export default function InvitedVerify() {
   return (
     <div className="min-h-screen bg-brand-warm flex flex-col">
       <header className="px-6 py-5 flex items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-yuzu-900 flex items-center justify-center">
-            <span className="text-yuzu-400 font-bold text-sm">Y</span>
-          </div>
-          <span className="font-semibold text-brand-text text-lg">yuzu</span>
-        </div>
+        <Logo />
       </header>
 
       <main className="flex-1 flex items-center justify-center px-6">
@@ -49,7 +45,7 @@ export default function InvitedVerify() {
               <div className="space-y-3">
                 <button
                   onClick={() => handleVerify('uaepass')}
-                  className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
+                  className="w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
                 >
                   <span className="text-2xl">🇦🇪</span>
                   <div>
@@ -62,7 +58,7 @@ export default function InvitedVerify() {
 
                 <button
                   onClick={() => handleVerify('otp')}
-                  className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
+                  className="w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
                 >
                   <span className="text-2xl">✉️</span>
                   <div>
@@ -104,7 +100,7 @@ export default function InvitedVerify() {
                     placeholder="Your name"
                     value={displayName}
                     onChange={(e) => setDisplayName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+                    className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
                     autoFocus
                   />
                 </div>

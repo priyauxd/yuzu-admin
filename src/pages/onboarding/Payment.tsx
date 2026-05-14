@@ -47,7 +47,7 @@ export default function Payment() {
         </p>
       </div>
 
-      <div className="bg-yuzu-50 border border-yuzu-300/40 rounded-xl p-3 mb-6 flex items-start gap-2.5">
+      <div className="bg-yuzu-50 border border-yuzu-300/40 rounded-2xl p-3 mb-6 flex items-start gap-2.5">
         <Lock className="w-4 h-4 text-yuzu-900 mt-0.5 shrink-0" />
         <p className="text-sm text-yuzu-900">
           Secured by Telr &middot; PCI DSS 4.0 compliant &middot; AED billing
@@ -55,7 +55,7 @@ export default function Payment() {
       </div>
 
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-xl p-3 mb-4 flex items-start gap-2.5">
+        <div className="bg-red-50 border border-red-200 rounded-2xl p-3 mb-4 flex items-start gap-2.5">
           <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />
           <div>
             <p className="text-sm font-medium text-red-800">Payment failed</p>
@@ -73,7 +73,7 @@ export default function Payment() {
             id="cardName"
             type="text"
             placeholder="Full name as on card"
-            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+            className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
           />
         </div>
 
@@ -86,7 +86,7 @@ export default function Payment() {
             type="text"
             placeholder="1234 5678 9012 3456"
             maxLength={19}
-            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+            className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
           />
         </div>
 
@@ -100,7 +100,7 @@ export default function Payment() {
               type="text"
               placeholder="MM/YY"
               maxLength={5}
-              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             />
           </div>
           <div>
@@ -112,7 +112,7 @@ export default function Payment() {
               type="text"
               placeholder="123"
               maxLength={4}
-              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             />
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function Payment() {
         <button
           type="submit"
           disabled={processing}
-          className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 disabled:bg-neutral-200 disabled:text-neutral-400 text-white font-semibold py-3 rounded-full shadow-[0_4px_14px_rgba(246,196,83,0.45)] transition-colors mt-2"
+          className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 disabled:bg-neutral-200 disabled:text-neutral-400 disabled:shadow-none text-white font-semibold py-3 rounded-full transition-colors shadow-[0_4px_14px_rgba(246,196,83,0.45)] mt-2"
         >
           {processing ? (
             <>

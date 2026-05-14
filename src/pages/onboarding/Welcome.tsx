@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, MessageCircle, Shield, Zap } from 'lucide-react'
+import Logo from '../../components/Logo'
 
 export default function Welcome() {
   const navigate = useNavigate()
@@ -7,12 +8,7 @@ export default function Welcome() {
   return (
     <div className="min-h-screen bg-brand-warm flex flex-col">
       <header className="px-6 py-5 flex items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-yuzu-900 flex items-center justify-center">
-            <span className="text-yuzu-400 font-bold text-sm">Y</span>
-          </div>
-          <span className="font-semibold text-brand-text text-lg">yuzu</span>
-        </div>
+        <Logo />
       </header>
 
       <main className="flex-1 flex items-center justify-center px-6">

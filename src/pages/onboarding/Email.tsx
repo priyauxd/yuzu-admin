@@ -58,7 +58,7 @@ export default function Email() {
               setEmail(e.target.value)
               setError('')
             }}
-            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+            className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             autoFocus
           />
           {error && (
@@ -87,11 +87,11 @@ export default function Email() {
       </div>
 
       <div className="mt-6 grid grid-cols-2 gap-3">
-        <button className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-brand-border bg-white hover:bg-brand-hover text-sm font-medium text-brand-text transition-colors">
+        <button className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-brand-border bg-white hover:bg-brand-hover text-sm font-medium text-brand-text transition-colors">
           <span className="text-base">🇦🇪</span>
           UAE Pass
         </button>
-        <button className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-brand-border bg-white hover:bg-brand-hover text-sm font-medium text-brand-text transition-colors">
+        <button className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border border-brand-border bg-white hover:bg-brand-hover text-sm font-medium text-brand-text transition-colors">
           <span className="font-bold text-blue-500">G</span>
           Google / MS
         </button>

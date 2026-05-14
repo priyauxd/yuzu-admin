@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, Download, Monitor, Smartphone } from 'lucide-react'
+import Logo from '../../components/Logo'
 
 export default function InvitedLanding() {
   const navigate = useNavigate()
@@ -7,12 +8,7 @@ export default function InvitedLanding() {
   return (
     <div className="min-h-screen bg-brand-warm flex flex-col">
       <header className="px-6 py-5 flex items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-yuzu-900 flex items-center justify-center">
-            <span className="text-yuzu-400 font-bold text-sm">Y</span>
-          </div>
-          <span className="font-semibold text-brand-text text-lg">yuzu</span>
-        </div>
+        <Logo />
       </header>
 
       <main className="flex-1 flex items-center justify-center px-6">
@@ -32,7 +28,7 @@ export default function InvitedLanding() {
           <div className="space-y-3 mb-8">
             <button
               onClick={() => navigate('/invite/verify')}
-              className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
+              className="w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
             >
               <div className="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center shrink-0">
                 <Smartphone className="w-6 h-6 text-neutral-700" />
@@ -48,7 +44,7 @@ export default function InvitedLanding() {
 
             <button
               onClick={() => navigate('/invite/verify')}
-              className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
+              className="w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
             >
               <div className="w-12 h-12 rounded-xl bg-neutral-100 flex items-center justify-center shrink-0">
                 <Monitor className="w-6 h-6 text-neutral-700" />

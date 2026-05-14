@@ -76,7 +76,7 @@ export default function VerifyOtp() {
               value={digit}
               onChange={(e) => handleChange(i, e.target.value)}
               onKeyDown={(e) => handleKeyDown(i, e)}
-              className="w-12 h-14 text-center text-xl font-semibold rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-12 h-14 text-center text-xl font-semibold rounded-2xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             />
           ))}
         </div>

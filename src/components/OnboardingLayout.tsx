@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import StepIndicator from './StepIndicator'
+import Logo from './Logo'
 
 interface OnboardingLayoutProps {
   children: ReactNode
@@ -19,12 +20,7 @@ export default function OnboardingLayout({
   return (
     <div className="min-h-screen bg-brand-warm flex flex-col">
       <header className="px-6 py-5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-yuzu-900 flex items-center justify-center">
-            <span className="text-yuzu-400 font-bold text-sm">Y</span>
-          </div>
-          <span className="font-semibold text-brand-text text-lg">yuzu</span>
-        </div>
+        <Logo />
         {showSteps && (
           <span className="text-sm text-brand-text-secondary">
             Step {currentStep} of {totalSteps}

@@ -76,7 +76,7 @@ export default function Profile() {
               type="text"
               value={form.firstName}
               onChange={(e) => update('firstName', e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
               placeholder="First"
               autoFocus
             />
@@ -93,7 +93,7 @@ export default function Profile() {
               type="text"
               value={form.lastName}
               onChange={(e) => update('lastName', e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
               placeholder="Last"
             />
             {errors.lastName && (
@@ -110,7 +110,7 @@ export default function Profile() {
             id="language"
             value={form.language}
             onChange={(e) => update('language', e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
+            className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
           >
             {LANGUAGES.map((lang) => (
               <option key={lang.value} value={lang.value}>
@@ -128,7 +128,7 @@ export default function Profile() {
             id="timezone"
             value={form.timezone}
             onChange={(e) => update('timezone', e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
+            className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
           >
             {TIMEZONES.map((tz) => (
               <option key={tz.value} value={tz.value}>
