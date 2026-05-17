@@ -10,6 +10,16 @@ import InviteTeam from './pages/onboarding/InviteTeam'
 import InvitedLanding from './pages/onboarding/InvitedLanding'
 import InvitedVerify from './pages/onboarding/InvitedVerify'
 import InvitedSuccess from './pages/onboarding/InvitedSuccess'
+import AppShell from './components/AppShell'
+import Dashboard from './pages/dashboard/Dashboard'
+import LiveDashboardPage from './pages/dashboard/LiveDashboardPage'
+
+import ConversationsPage from './pages/dashboard/ConversationsPage'
+import TasksPage from './pages/dashboard/TasksPage'
+import VoicePage from './pages/dashboard/VoicePage'
+import KnowledgePage from './pages/dashboard/KnowledgePage'
+import AIAgentsPage from './pages/dashboard/AIAgentsPage'
+import SettingsPage from './pages/dashboard/SettingsPage'
 
 export default function App() {
   return (
@@ -29,6 +39,22 @@ export default function App() {
         <Route path="/invite" element={<InvitedLanding />} />
         <Route path="/invite/verify" element={<InvitedVerify />} />
         <Route path="/invite/success" element={<InvitedSuccess />} />
+
+        {/* Dashboard (post-login) */}
+        <Route path="/app" element={<AppShell />}>
+          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<LiveDashboardPage />} />
+
+          <Route path="conversations" element={<ConversationsPage />} />
+          <Route path="tasks" element={<TasksPage />} />
+          <Route path="voice" element={<VoicePage />} />
+          <Route path="ai-agents" element={<AIAgentsPage />} />
+          <Route path="knowledge" element={<KnowledgePage />} />
+          <Route path="settings" element={<SettingsPage />} />
+          <Route path="team" element={<Navigate to="/app/settings" replace />} />
+          <Route path="billing" element={<Navigate to="/app/settings" replace />} />
+          <Route path="connectors" element={<Navigate to="/app/settings" replace />} />
+        </Route>
 
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />

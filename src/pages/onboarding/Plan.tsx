@@ -3,20 +3,20 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
 
-const STEP_LABELS = ['Email', 'Verify', 'Profile', 'Plan', 'Payment', 'Workspace']
+const STEP_LABELS = ['Email', 'Verify', 'Setup', 'Plan', 'Done']
 
 const PLANS = [
   {
     id: 'starter',
     name: 'Starter',
-    price: 10,
-    description: 'For small teams getting started',
+    price: 0,
+    description: 'Free for small teams',
     features: [
-      'Up to 10 members',
+      'Up to 5 users',
+      'Internal messaging only',
       'Channels & DMs',
       'Voice notes',
       'Mini tasks',
-      'Basic AI features',
     ],
   },
   {
@@ -55,14 +55,15 @@ export default function Plan() {
   const [selected, setSelected] = useState('business')
 
   const handleContinue = () => {
-    navigate('/onboarding/payment', { state: { plan: selected } })
+    navigate('/onboarding/workspace-created', { state: { plan: selected } })
   }
 
   return (
     <OnboardingLayout
       currentStep={4}
-      totalSteps={6}
+      totalSteps={5}
       stepLabels={STEP_LABELS}
+      wide
     >
       <div className="text-center mb-8">
         <h1 className="text-2xl font-bold text-brand-text mb-2">
@@ -73,12 +74,12 @@ export default function Plan() {
         </p>
       </div>
 
-      <div className="space-y-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {PLANS.map((plan) => (
           <button
             key={plan.id}
             onClick={() => setSelected(plan.id)}
-            className={`w-full text-left p-4 rounded-xl border-2 transition-all relative ${
+            className={`text-left p-5 rounded-2xl border-2 transition-all relative flex flex-col ${
               selected === plan.id
                 ? 'border-yuzu-400 bg-yuzu-50 shadow-sm'
                 : 'border-brand-border bg-white hover:border-neutral-300'
@@ -89,19 +90,23 @@ export default function Plan() {
                 Popular
               </span>
             )}
-            <div className="flex items-start justify-between mb-2">
-              <div>
-                <h3 className="font-semibold text-brand-text">{plan.name}</h3>
-                <p className="text-sm text-brand-text-secondary">{plan.description}</p>
-              </div>
-              <div className="text-right shrink-0 ml-4">
-                <span className="text-2xl font-bold text-brand-text">
-                  ${plan.price}
-                </span>
-                <span className="text-sm text-brand-text-secondary">/user/mo</span>
-              </div>
+            <div className="mb-3">
+              <h3 className="font-semibold text-brand-text text-lg">{plan.name}</h3>
+              <p className="text-sm text-brand-text-secondary">{plan.description}</p>
             </div>
-            <ul className="mt-3 space-y-1.5">
+            <div className="mb-4">
+              {plan.price === 0 ? (
+                <span className="text-3xl font-bold text-brand-text">Free</span>
+              ) : (
+                <>
+                  <span className="text-3xl font-bold text-brand-text">
+                    ${plan.price}
+                  </span>
+                  <span className="text-sm text-brand-text-secondary">/user/mo</span>
+                </>
+              )}
+            </div>
+            <ul className="space-y-2 flex-1">
               {plan.features.map((f) => (
                 <li
                   key={f}
@@ -122,9 +127,9 @@ export default function Plan() {
 
       <button
         onClick={handleContinue}
-        className="w-full flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-white font-semibold py-3 rounded-full transition-colors shadow-[0_4px_14px_rgba(246,196,83,0.45)] mt-6"
+        className="w-full max-w-md mx-auto flex items-center justify-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-white font-semibold py-3 rounded-full transition-colors shadow-[0_4px_14px_rgba(246,196,83,0.45)] mt-8"
       >
-        Continue to Payment
+        Start Free Trial
         <ArrowRight className="w-4 h-4" />
       </button>
 

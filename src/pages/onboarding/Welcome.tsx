@@ -1,14 +1,25 @@
 import { useNavigate } from 'react-router-dom'
-import { ArrowRight, MessageCircle, Shield, Zap } from 'lucide-react'
+import { ArrowRight, MessageCircle, Shield, Zap, Bot } from 'lucide-react'
 import Logo from '../../components/Logo'
+import Confetti from '../../components/Confetti'
 
 export default function Welcome() {
   const navigate = useNavigate()
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <header className="px-6 py-5 flex items-center">
+      <Confetti />
+      <header className="px-6 py-5 flex items-center justify-between">
         <Logo />
+        <a
+          href="https://priyauxd.github.io/yuzu-desktop"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm font-medium text-brand-text-secondary hover:text-brand-text border border-brand-border hover:border-neutral-300 bg-white hover:bg-neutral-100 px-4 py-2 rounded-full transition-colors"
+        >
+          <Bot className="w-4 h-4" />
+          Try Agent App
+        </a>
       </header>
 
       <main className="flex-1 flex items-center justify-center px-6">

@@ -23,7 +23,7 @@ export default function StepIndicator({
             <div className="flex items-center w-full">
               <div
                 className={`
-                  w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium shrink-0 transition-all
+                  w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold shrink-0 transition-all
                   ${isComplete ? 'bg-yuzu-900 text-white' : ''}
                   ${isCurrent ? 'bg-yuzu-400 text-yuzu-900 ring-4 ring-yuzu-100' : ''}
                   ${!isComplete && !isCurrent ? 'bg-neutral-200 text-neutral-400' : ''}

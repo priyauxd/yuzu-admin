@@ -2,15 +2,15 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, Users, MessageSquare, Mic } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
 
-const STEP_LABELS = ['Email', 'Verify', 'Profile', 'Plan', 'Payment', 'Workspace']
+const STEP_LABELS = ['Email', 'Verify', 'Setup', 'Plan', 'Done']
 
 export default function WorkspaceCreated() {
   const navigate = useNavigate()
 
   return (
     <OnboardingLayout
-      currentStep={6}
-      totalSteps={6}
+      currentStep={5}
+      totalSteps={5}
       stepLabels={STEP_LABELS}
     >
       <div className="text-center mb-8">
@@ -54,7 +54,7 @@ export default function WorkspaceCreated() {
       </button>
 
       <button
-        onClick={() => navigate('/')}
+        onClick={() => { sessionStorage.setItem('yuzu_show_welcome', '1'); navigate('/app') }}
         className="w-full text-center mt-3 text-sm text-brand-text-secondary hover:text-brand-text font-medium py-2"
       >
         Skip for now &mdash; go to dashboard

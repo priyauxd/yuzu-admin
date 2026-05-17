@@ -7,6 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
+        amber: {
+          25: '#F5EDE7',
+        },
         yuzu: {
           50: '#fffbeb',
           100: '#f5ede7',
@@ -27,7 +30,7 @@ export default {
           'text-secondary': '#808284',
           'text-tertiary': '#535862',
           'text-disabled': '#d9d9da',
-          border: '#d5d7da',
+          border: '#eeeeee',
           hover: '#f5f5f5',
         },
         neutral: {
@@ -45,6 +48,20 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      keyframes: {
+        slideIn: {
+          from: { transform: 'translateX(100%)' },
+          to: { transform: 'translateX(0)' },
+        },
+        confettiFall: {
+          '0%': { transform: 'translateY(0) rotate(0deg)', opacity: '1' },
+          '100%': { transform: 'translateY(100vh) rotate(720deg)', opacity: '0' },
+        },
+      },
+      animation: {
+        'slide-in': 'slideIn 0.2s ease-out',
+        'confetti-fall': 'confettiFall 3s linear forwards',
       },
       boxShadow: {
         sm: '0 1px 2px -1px #f5f5f5, 0 1px 3px 0 #f5f5f5',

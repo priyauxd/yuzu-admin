@@ -8,6 +8,7 @@ interface OnboardingLayoutProps {
   totalSteps: number
   stepLabels: string[]
   showSteps?: boolean
+  wide?: boolean
 }
 
 export default function OnboardingLayout({
@@ -16,9 +17,10 @@ export default function OnboardingLayout({
   totalSteps,
   stepLabels,
   showSteps = true,
+  wide = false,
 }: OnboardingLayoutProps) {
   return (
-    <div className="min-h-screen bg-brand-warm flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <header className="px-6 py-5 flex items-center justify-between">
         <Logo />
         {showSteps && (
@@ -39,7 +41,7 @@ export default function OnboardingLayout({
       )}
 
       <main className="flex-1 flex items-start justify-center px-6 py-8">
-        <div className="w-full max-w-md">{children}</div>
+        <div className={`w-full ${wide ? 'max-w-4xl' : 'max-w-md'}`}>{children}</div>
       </main>
 
       <footer className="px-6 py-4 text-center text-xs text-brand-text-secondary">

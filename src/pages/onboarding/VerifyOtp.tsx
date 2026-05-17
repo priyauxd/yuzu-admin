@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { ShieldCheck } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
 
-const STEP_LABELS = ['Email', 'Verify', 'Profile', 'Plan', 'Payment', 'Workspace']
+const STEP_LABELS = ['Email', 'Verify', 'Setup', 'Plan', 'Done']
 const OTP_LENGTH = 6
 
 export default function VerifyOtp() {
@@ -48,7 +48,7 @@ export default function VerifyOtp() {
   return (
     <OnboardingLayout
       currentStep={2}
-      totalSteps={6}
+      totalSteps={5}
       stepLabels={STEP_LABELS}
     >
       <div className="text-center mb-8">
@@ -76,7 +76,7 @@ export default function VerifyOtp() {
               value={digit}
               onChange={(e) => handleChange(i, e.target.value)}
               onKeyDown={(e) => handleKeyDown(i, e)}
-              className="w-12 h-14 text-center text-xl font-semibold rounded-2xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-14 h-14 text-center text-xl font-semibold rounded-full border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             />
           ))}
         </div>

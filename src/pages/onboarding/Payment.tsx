@@ -3,10 +3,10 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { CreditCard, Lock, AlertCircle } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
 
-const STEP_LABELS = ['Email', 'Verify', 'Profile', 'Plan', 'Payment', 'Workspace']
+const STEP_LABELS = ['Email', 'Verify', 'Business', 'Organization', 'Profile', 'Plan', 'Payment', 'Workspace']
 
 const PLAN_PRICES: Record<string, { name: string; price: number }> = {
-  starter: { name: 'Starter', price: 10 },
+  starter: { name: 'Starter', price: 0 },
   business: { name: 'Business', price: 20 },
   enterprise: { name: 'Enterprise', price: 25 },
 }
@@ -31,8 +31,8 @@ export default function Payment() {
 
   return (
     <OnboardingLayout
-      currentStep={5}
-      totalSteps={6}
+      currentStep={7}
+      totalSteps={8}
       stepLabels={STEP_LABELS}
     >
       <div className="text-center mb-8">

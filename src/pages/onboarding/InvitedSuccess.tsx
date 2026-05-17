@@ -8,7 +8,7 @@ export default function InvitedSuccess() {
     (location.state as { displayName?: string })?.displayName || 'there'
 
   return (
-    <div className="min-h-screen bg-brand-warm flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <header className="px-6 py-5 flex items-center">
         <Logo />
       </header>

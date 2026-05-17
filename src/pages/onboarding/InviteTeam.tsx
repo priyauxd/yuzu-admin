@@ -51,7 +51,7 @@ export default function InviteTeam() {
   }
 
   return (
-    <div className="min-h-screen bg-brand-warm flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       <header className="px-6 py-5 flex items-center justify-between">
         <Logo />
       </header>
@@ -84,7 +84,7 @@ export default function InviteTeam() {
                 Your team will receive a link to join.
               </p>
               <button
-                onClick={() => navigate('/')}
+                onClick={() => { sessionStorage.setItem('yuzu_show_welcome', '1'); navigate('/app') }}
                 className="inline-flex items-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-white font-semibold px-8 py-3 rounded-full shadow-[0_4px_14px_rgba(246,196,83,0.45)] transition-colors"
               >
                 Go to Dashboard
@@ -179,7 +179,7 @@ export default function InviteTeam() {
               </button>
 
               <button
-                onClick={() => navigate('/')}
+                onClick={() => { sessionStorage.setItem('yuzu_show_welcome', '1'); navigate('/app') }}
                 className="w-full text-center mt-3 text-sm text-brand-text-secondary hover:text-brand-text font-medium py-2"
               >
                 Skip for now

@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { ArrowRight, Mail } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
 
-const STEP_LABELS = ['Email', 'Verify', 'Profile', 'Plan', 'Payment', 'Workspace']
+const STEP_LABELS = ['Email', 'Verify', 'Setup', 'Plan', 'Done']
 
 export default function Email() {
   const navigate = useNavigate()
@@ -24,7 +24,7 @@ export default function Email() {
   return (
     <OnboardingLayout
       currentStep={1}
-      totalSteps={6}
+      totalSteps={5}
       stepLabels={STEP_LABELS}
     >
       <div className="text-center mb-8">
@@ -80,7 +80,7 @@ export default function Email() {
           <div className="w-full border-t border-brand-border" />
         </div>
         <div className="relative flex justify-center text-sm">
-          <span className="px-3 bg-brand-warm text-brand-text-secondary">
+          <span className="px-3 bg-white text-brand-text-secondary">
             or continue with
           </span>
         </div>
