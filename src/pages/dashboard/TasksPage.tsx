@@ -2,11 +2,13 @@ import { useState } from 'react'
 import {
   Plus, Circle, CheckCircle2, Clock, AlertCircle,
   Search, LayoutGrid, List, MoreHorizontal,
-  ChevronLeft, ChevronRight,
+  ChevronLeft, ChevronRight, Zap,
 } from 'lucide-react'
 
 type TaskStatus = 'todo' | 'in_progress' | 'done'
 type TaskPriority = 'High' | 'Medium' | 'Low'
+
+type AiFocus = 'now' | 'soon'
 
 interface Task {
   id: number
@@ -16,19 +18,25 @@ interface Task {
   priority: TaskPriority
   due: string
   team: string
+  aiFocus?: AiFocus
+}
+
+const AI_FOCUS_CONFIG: Record<AiFocus, { label: string; iconColor: string; bgColor: string; rowBorder: string; badge: string }> = {
+  now:  { label: 'Focus Now',  iconColor: 'text-red-500',    bgColor: 'bg-red-50',    rowBorder: 'border-l-red-400',    badge: 'bg-red-50 text-red-600' },
+  soon: { label: 'Focus Soon', iconColor: 'text-yellow-500', bgColor: 'bg-yellow-50', rowBorder: 'border-l-yellow-400', badge: 'bg-yellow-50 text-yellow-700' },
 }
 
 const TASKS: Task[] = [
-  { id: 1, title: 'Review delivery schedule for Zone A', assignee: 'Ahmed Al Maktoum', status: 'in_progress', priority: 'High', due: 'Today', team: 'Operations' },
-  { id: 2, title: 'Update knowledge base articles', assignee: 'Fatima Hassan', status: 'todo', priority: 'Medium', due: 'Tomorrow', team: 'Support' },
-  { id: 3, title: 'Complete site inspection report', assignee: 'Raj Patel', status: 'done', priority: 'High', due: 'Yesterday', team: 'Operations' },
-  { id: 4, title: 'Configure WhatsApp auto-responses', assignee: 'Omar Khalid', status: 'todo', priority: 'Low', due: 'May 18', team: 'Support' },
-  { id: 5, title: 'Onboard new support agents', assignee: 'Sara Mohamed', status: 'in_progress', priority: 'Medium', due: 'May 16', team: 'HR' },
-  { id: 6, title: 'Test SIP call routing rules', assignee: 'Ahmed Al Maktoum', status: 'todo', priority: 'High', due: 'Today', team: 'Operations' },
-  { id: 7, title: 'Prepare monthly sales report', assignee: 'Priya Sharma', status: 'todo', priority: 'Medium', due: 'May 20', team: 'Sales' },
-  { id: 8, title: 'Follow up with lead #2045', assignee: 'Ali Khan', status: 'in_progress', priority: 'High', due: 'Today', team: 'Sales' },
-  { id: 9, title: 'Review escalated tickets from last week', assignee: 'Fatima Hassan', status: 'done', priority: 'Medium', due: 'May 12', team: 'Support' },
-  { id: 10, title: 'Set up new DID routing for Riyadh', assignee: 'Omar Khalid', status: 'todo', priority: 'Low', due: 'May 22', team: 'Operations' },
+  { id: 1,  title: 'Review delivery schedule for Zone A',      assignee: 'Ahmed Al Maktoum', status: 'in_progress', priority: 'High',   due: 'Today',     team: 'Operations', aiFocus: 'now' },
+  { id: 2,  title: 'Update knowledge base articles',           assignee: 'Fatima Hassan',    status: 'todo',        priority: 'Medium', due: 'Tomorrow',  team: 'Support' },
+  { id: 3,  title: 'Complete site inspection report',          assignee: 'Raj Patel',        status: 'done',        priority: 'High',   due: 'Yesterday', team: 'Operations' },
+  { id: 4,  title: 'Configure WhatsApp auto-responses',        assignee: 'Omar Khalid',      status: 'todo',        priority: 'Low',    due: 'May 18',    team: 'Support' },
+  { id: 5,  title: 'Onboard new support agents',               assignee: 'Sara Mohamed',     status: 'in_progress', priority: 'Medium', due: 'May 16',    team: 'HR',         aiFocus: 'soon' },
+  { id: 6,  title: 'Test SIP call routing rules',              assignee: 'Ahmed Al Maktoum', status: 'todo',        priority: 'High',   due: 'Today',     team: 'Operations', aiFocus: 'now' },
+  { id: 7,  title: 'Prepare monthly sales report',             assignee: 'Priya Sharma',     status: 'todo',        priority: 'Medium', due: 'May 20',    team: 'Sales' },
+  { id: 8,  title: 'Follow up with lead #2045',                assignee: 'Ali Khan',         status: 'in_progress', priority: 'High',   due: 'Today',     team: 'Sales',      aiFocus: 'now' },
+  { id: 9,  title: 'Review escalated tickets from last week',  assignee: 'Fatima Hassan',    status: 'done',        priority: 'Medium', due: 'May 12',    team: 'Support' },
+  { id: 10, title: 'Set up new DID routing for Riyadh',        assignee: 'Omar Khalid',      status: 'todo',        priority: 'Low',    due: 'May 22',    team: 'Operations' },
 ]
 
 const STATUS_CONFIG = {
@@ -109,7 +117,13 @@ export default function TasksPage() {
           {paginated.map((task) => {
             const StatusIcon = STATUS_CONFIG[task.status].icon
             return (
-              <div key={task.id} className="border border-neutral-200/80 rounded-2xl p-5 bg-gradient-to-br from-white to-neutral-50/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 relative group">
+              <div key={task.id} className={`border rounded-2xl p-5 bg-gradient-to-br from-white to-neutral-50/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 relative group border-l-4 ${task.aiFocus ? AI_FOCUS_CONFIG[task.aiFocus].rowBorder : 'border-l-neutral-200/80'} border-neutral-200/80`}>
+                {task.aiFocus && (
+                  <span className={`inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full mb-2 ${AI_FOCUS_CONFIG[task.aiFocus].badge}`}>
+                    <Zap className="w-2.5 h-2.5" />
+                    {AI_FOCUS_CONFIG[task.aiFocus].label}
+                  </span>
+                )}
                 <button className="absolute top-3 right-3 p-1 rounded-full hover:bg-neutral-100 text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity">
                   <MoreHorizontal className="w-4 h-4" />
                 </button>
@@ -139,13 +153,19 @@ export default function TasksPage() {
       {/* List View */}
       {viewMode === 'list' && (
         <div className="border border-brand-border rounded-xl overflow-hidden bg-white">
-          <div className="grid grid-cols-[auto_1fr_1fr_0.6fr_0.6fr_0.6fr_40px] gap-3 px-4 py-2.5 bg-neutral-50 text-xs font-medium text-brand-text-secondary border-b border-brand-border">
-            <span className="w-5" /><span>Task</span><span>Assignee</span><span>Status</span><span>Priority</span><span>Due</span><span />
+          <div className="grid grid-cols-[20px_auto_1fr_1fr_0.6fr_0.6fr_0.6fr_40px] gap-3 px-4 py-2.5 bg-neutral-50 text-xs font-medium text-brand-text-secondary border-b border-brand-border">
+            <span /><span className="w-5" /><span>Task</span><span>Assignee</span><span>Status</span><span>Priority</span><span>Due</span><span />
           </div>
           {paginated.map((task) => {
             const StatusIcon = STATUS_CONFIG[task.status].icon
+            const ai = task.aiFocus ? AI_FOCUS_CONFIG[task.aiFocus] : null
             return (
-              <div key={task.id} className="grid grid-cols-[auto_1fr_1fr_0.6fr_0.6fr_0.6fr_40px] gap-3 px-4 py-3 border-b border-neutral-100 last:border-0 hover:bg-neutral-50 items-center group">
+              <div key={task.id} className={`grid grid-cols-[20px_auto_1fr_1fr_0.6fr_0.6fr_0.6fr_40px] gap-3 px-4 py-3 border-b border-neutral-100 last:border-0 hover:bg-neutral-50 items-center group border-l-2 ${ai ? ai.rowBorder : 'border-l-transparent'}`}>
+                {ai ? (
+                  <div title={ai.label} className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${ai.bgColor}`}>
+                    <Zap className={`w-3 h-3 ${ai.iconColor}`} />
+                  </div>
+                ) : <span />}
                 <StatusIcon className={`w-5 h-5 shrink-0 ${STATUS_CONFIG[task.status].color}`} />
                 <p className={`text-sm font-medium truncate ${task.status === 'done' ? 'text-brand-text-secondary line-through' : 'text-brand-text'}`}>
                   {task.title}

@@ -20,63 +20,53 @@ interface KpiGroup   { id: string; title: string; metrics: KpiMetric[] }
 
 const DEFAULT_GROUPS: KpiGroup[] = [
   {
-    id: 'team-presence', title: 'Team Presence',
+    id: 'cx-health', title: 'Customer Experience',
     metrics: [
-      { label: 'Online',          value: 14,    trend:  8 },
-      { label: 'In Meeting',      value: 4,     trend:  2 },
-      { label: 'Away',            value: 2,     trend: -1 },
-      { label: 'Do Not Disturb',  value: 1,     trend:  0 },
-      { label: 'Offline',         value: 7,     trend: -5 },
-      { label: 'Attendance Rate', value: '75%', trend:  3 },
+      { label: 'CSAT Score',   value: '4.2 / 5', trend:  5 },
+      { label: 'FCR Rate',     value: '68%',      trend:  4 },
+      { label: 'NPS',          value: 42,         trend:  8 },
+      { label: 'SLA Breaches', value: 2,          trend: -12 },
     ],
   },
   {
-    id: 'whatsapp', title: 'WhatsApp',
+    id: 'queue', title: 'Queue Health',
     metrics: [
-      { label: 'Total Conv.',   value: 344,      trend:  7 },
-      { label: 'New Conv.',     value: 45,       trend: 12 },
-      { label: 'Open',          value: 56,       trend: -3 },
-      { label: 'Closed Today',  value: 66,       trend:  5 },
-      { label: 'Unassigned',    value: 3,        trend: -8 },
-      { label: 'Avg. Response', value: '4m 12s', trend:  6 },
+      { label: 'Open',           value: 56,       trend: -3 },
+      { label: 'Unassigned',     value: 3,        trend: -8 },
+      { label: 'Waiting > 30m', value: 8,        trend: -5 },
+      { label: 'Resolved Today', value: 66,       trend:  5 },
     ],
   },
   {
-    id: 'messaging', title: 'Messaging & Channels',
+    id: 'response', title: 'Response & Handling',
     metrics: [
-      { label: 'Total Messages',       value: '3,420', trend:  9 },
-      { label: 'Internal DMs',         value: '2,198', trend:  7 },
-      { label: 'Active Channels',      value: 12,      trend:  2 },
-      { label: 'Voice Notes',          value: 124,     trend: 14 },
-      { label: 'Unread Messages',      value: 38,      trend: -4 },
-      { label: 'Canned Responses Used',value: 87,      trend: 11 },
+      { label: 'Avg. First Response', value: '4m 12s', trend:  6 },
+      { label: 'Avg. Handle Time',    value: '8m 45s', trend: -3 },
+      { label: 'Reopen Rate',         value: '6%',     trend: -2 },
+      { label: 'Escalations',         value: 4,        trend: -9 },
     ],
   },
   {
-    id: 'tasks', title: 'Tasks',
+    id: 'team', title: 'Team',
     metrics: [
-      { label: 'Total Tasks',     value: 48, trend:  5 },
-      { label: 'To Do',          value: 12, trend: -2 },
-      { label: 'In Progress',    value: 23, trend:  8 },
-      { label: 'Completed Today',value: 13, trend: 18 },
-      { label: 'High Priority',  value: 8,  trend: -3 },
-      { label: 'Overdue',        value: 2,  trend: -1 },
+      { label: 'Online Agents',  value: '14 / 28', trend:  8 },
+      { label: 'Attendance',     value: '75%',     trend:  3 },
+      { label: 'Overdue Tasks',  value: 2,         trend: -1 },
+      { label: 'High Priority',  value: 8,         trend: -3 },
     ],
   },
   {
     id: 'calls', title: 'Calls & Voice',
     metrics: [
-      { label: 'Total Calls',    value: 182,      trend:  6 },
-      { label: 'Inbound',        value: 134,      trend:  4 },
-      { label: 'Outbound',       value: 48,       trend:  9 },
-      { label: 'Missed',         value: 11,       trend: -7 },
-      { label: 'Avg. Duration',  value: '4m 32s', trend:  3 },
-      { label: 'Connected Rate', value: '87%',    trend:  5 },
+      { label: 'Missed Calls',     value: 11,       trend: -7 },
+      { label: 'Connected Rate',   value: '87%',    trend:  5 },
+      { label: 'Avg. Duration',    value: '4m 32s', trend:  3 },
+      { label: 'Callbacks Pending',value: 4,        trend: -6 },
     ],
   },
 ]
 
-const STORAGE_KEY = 'yuzu_dashboard_v3'
+const STORAGE_KEY = 'yuzu_dashboard_v4'
 
 interface Layout {
   groupOrder:  string[]

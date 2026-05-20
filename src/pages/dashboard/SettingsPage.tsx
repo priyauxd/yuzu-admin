@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import {
   User, Users, CreditCard, Plug, UsersRound, PhoneCall,
-  Search, Mail, Phone, Plus, Minus, Download,
+  Search, Mail, Phone, Plus, Minus, Download, Trash2,
   MessageCircle, Database, ExternalLink,
-  ArrowUpRight, X, MoreHorizontal, Trash2, Pencil,
+  ArrowUpRight, X, MoreHorizontal, Pencil,
   LayoutGrid, List, ChevronLeft, ChevronRight, PanelLeftClose, PanelLeft,
+  UserX, Send, Smartphone,
 } from 'lucide-react'
 import Toggle from '../../components/Toggle'
 
@@ -28,6 +29,7 @@ interface Member {
   team: string
   lastLogin: string
   extension: string
+  deactivated?: boolean
 }
 
 interface Team {
@@ -225,6 +227,8 @@ function UsersTab() {
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editRole, setEditRole] = useState('')
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null)
+  const [resendId, setResendId] = useState<string | null>(null)
+  const [resendMethod, setResendMethod] = useState<'email' | 'sms'>('email')
 
   const roleCounts = {
     all: members.length,
@@ -259,9 +263,13 @@ function UsersTab() {
   }
 
   const handleRemove = (id: string) => {
-    setMembers(prev => prev.filter(m => m.id !== id))
+    setMembers(prev => prev.map(m => m.id === id ? { ...m, deactivated: true } : m))
     setConfirmDeleteId(null)
     setMenuOpenId(null)
+  }
+
+  const handleReactivate = (id: string) => {
+    setMembers(prev => prev.map(m => m.id === id ? { ...m, deactivated: false } : m))
   }
 
   const handleSaveRole = (id: string) => {
@@ -317,7 +325,7 @@ function UsersTab() {
       {viewMode === 'grid' && (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
           {paginated.map((member) => (
-            <div key={member.id} className="border border-neutral-200/80 rounded-2xl p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 bg-gradient-to-br from-white to-neutral-50/50 relative group">
+            <div key={member.id} className={`border rounded-2xl p-5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 bg-gradient-to-br relative group ${member.deactivated ? 'from-neutral-50 to-neutral-100/50 border-neutral-200 opacity-60' : 'from-white to-neutral-50/50 border-neutral-200/80'}`}>
               <button
                 onClick={() => setMenuOpenId(menuOpenId === member.id ? null : member.id)}
                 className="absolute top-3 right-3 p-1 rounded-full hover:bg-neutral-100 text-neutral-400 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -327,8 +335,11 @@ function UsersTab() {
               {menuOpenId === member.id && (
                 <div className="absolute right-3 top-9 w-40 bg-white rounded-xl border border-brand-border shadow-lg py-1 z-50">
                   <button onClick={() => { setEditingId(member.id); setEditRole(member.role); setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-brand-text-secondary hover:bg-neutral-50 hover:text-brand-text"><Pencil className="w-3.5 h-3.5" /> Edit Role</button>
-                  <button onClick={() => { window.location.href = `mailto:${member.email}`; setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-brand-text-secondary hover:bg-neutral-50 hover:text-brand-text"><Mail className="w-3.5 h-3.5" /> Send Email</button>
-                  <button onClick={() => { setConfirmDeleteId(member.id); setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-500 hover:bg-red-50"><Trash2 className="w-3.5 h-3.5" /> Remove</button>
+                  <button onClick={() => { setResendId(member.id); setResendMethod('email'); setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-brand-text-secondary hover:bg-neutral-50 hover:text-brand-text"><Send className="w-3.5 h-3.5" /> Resend Invitation</button>
+                  {member.deactivated
+                    ? <button onClick={() => { handleReactivate(member.id); setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-green-600 hover:bg-green-50"><UserX className="w-3.5 h-3.5" /> Reactivate</button>
+                    : <button onClick={() => { setConfirmDeleteId(member.id); setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-orange-500 hover:bg-orange-50"><UserX className="w-3.5 h-3.5" /> Deactivate</button>
+                  }
                 </div>
               )}
               <div className="flex items-center gap-3 mb-3">
@@ -341,7 +352,10 @@ function UsersTab() {
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2">
                     <p className="text-sm font-semibold text-brand-text truncate">{member.name}</p>
-                    <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full shrink-0 ${ROLE_BADGE[member.role] || 'bg-neutral-100 text-neutral-600'}`}>{member.role}</span>
+                    {member.deactivated
+                      ? <span className="text-[10px] font-medium px-2 py-0.5 rounded-full shrink-0 bg-neutral-200 text-neutral-500">Deactivated</span>
+                      : <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full shrink-0 ${ROLE_BADGE[member.role] || 'bg-neutral-100 text-neutral-600'}`}>{member.role}</span>
+                    }
                   </div>
                   <p className="text-xs text-brand-text-secondary truncate">{member.email}</p>
                 </div>
@@ -376,7 +390,7 @@ function UsersTab() {
             <span>Full Name</span><span>Email</span><span>Role</span><span>Last Login</span><span>Ext.</span><span>Team</span><span />
           </div>
           {paginated.map((member) => (
-            <div key={member.id} className="grid grid-cols-[1fr_1.2fr_0.8fr_1fr_0.6fr_0.7fr_40px] gap-2 px-4 py-3 border-b border-neutral-100 last:border-0 hover:bg-neutral-50 items-center group">
+            <div key={member.id} className={`grid grid-cols-[1fr_1.2fr_0.8fr_1fr_0.6fr_0.7fr_40px] gap-2 px-4 py-3 border-b border-neutral-100 last:border-0 hover:bg-neutral-50 items-center group ${member.deactivated ? 'opacity-50' : ''}`}>
               <div className="flex items-center gap-2.5 min-w-0">
                 <div className="relative shrink-0">
                   <div className="w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-xs font-medium text-brand-text-tertiary">
@@ -387,7 +401,10 @@ function UsersTab() {
                 <span className="text-sm font-medium text-brand-text truncate">{member.name}</span>
               </div>
               <span className="text-sm text-brand-text-secondary truncate">{member.email}</span>
-              <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full w-fit ${ROLE_BADGE[member.role] || 'bg-neutral-100 text-neutral-600'}`}>{member.role}</span>
+              {member.deactivated
+                ? <span className="text-[10px] font-medium px-2 py-0.5 rounded-full w-fit bg-neutral-200 text-neutral-500">Deactivated</span>
+                : <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full w-fit ${ROLE_BADGE[member.role] || 'bg-neutral-100 text-neutral-600'}`}>{member.role}</span>
+              }
               <span className="text-sm text-brand-text-secondary">{member.lastLogin}</span>
               <span className="text-sm text-brand-text font-mono">{member.extension}</span>
               <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full w-fit ${INITIAL_TEAMS.find(t => t.name === member.team)?.color || 'bg-neutral-100 text-neutral-500'}`}>{member.team}</span>
@@ -398,8 +415,11 @@ function UsersTab() {
                 {menuOpenId === member.id && (
                   <div className="absolute right-0 top-full mt-1 w-40 bg-white rounded-xl border border-brand-border shadow-lg py-1 z-50">
                     <button onClick={() => { setEditingId(member.id); setEditRole(member.role); setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-brand-text-secondary hover:bg-neutral-50 hover:text-brand-text"><Pencil className="w-3.5 h-3.5" /> Edit Role</button>
-                    <button onClick={() => { window.location.href = `mailto:${member.email}`; setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-brand-text-secondary hover:bg-neutral-50 hover:text-brand-text"><Mail className="w-3.5 h-3.5" /> Send Email</button>
-                    <button onClick={() => { setConfirmDeleteId(member.id); setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-red-500 hover:bg-red-50"><Trash2 className="w-3.5 h-3.5" /> Remove</button>
+                    <button onClick={() => { setResendId(member.id); setResendMethod('email'); setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-brand-text-secondary hover:bg-neutral-50 hover:text-brand-text"><Send className="w-3.5 h-3.5" /> Resend Invitation</button>
+                    {member.deactivated
+                      ? <button onClick={() => { handleReactivate(member.id); setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-green-600 hover:bg-green-50"><UserX className="w-3.5 h-3.5" /> Reactivate</button>
+                      : <button onClick={() => { setConfirmDeleteId(member.id); setMenuOpenId(null); }} className="flex items-center gap-2 w-full px-3 py-2 text-sm text-orange-500 hover:bg-orange-50"><UserX className="w-3.5 h-3.5" /> Deactivate</button>
+                    }
                   </div>
                 )}
               </div>
@@ -451,16 +471,110 @@ function UsersTab() {
         </>
       )}
 
-      {/* Confirm delete */}
+      {/* Resend Invitation panel */}
+      {resendId && (() => {
+        const member = members.find(m => m.id === resendId)
+        if (!member) return null
+        return (
+          <>
+            <div className="fixed inset-0 bg-black/30 z-40" onClick={() => setResendId(null)} />
+            <div className="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 flex flex-col animate-[slideIn_0.2s_ease-out]">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-brand-border">
+                <div>
+                  <h3 className="text-lg font-semibold text-brand-text">Resend Invitation</h3>
+                  <p className="text-xs text-brand-text-secondary">Choose how to reach {member.name}</p>
+                </div>
+                <button onClick={() => setResendId(null)} className="p-2 rounded-lg hover:bg-neutral-100 text-neutral-400 hover:text-neutral-600 transition-colors"><X className="w-5 h-5" /></button>
+              </div>
+              <div className="flex-1 px-6 py-6 space-y-5 overflow-y-auto">
+                {/* Member summary */}
+                <div className="flex items-center gap-3 p-4 bg-neutral-50 rounded-xl border border-brand-border">
+                  <div className="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center text-sm font-semibold text-brand-text-tertiary shrink-0">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-brand-text">{member.name}</p>
+                    <p className="text-xs text-brand-text-secondary">{member.role} · {member.team}</p>
+                  </div>
+                </div>
+
+                {/* Method toggle */}
+                <div>
+                  <label className="block text-sm font-medium text-brand-text mb-2">Send via</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => setResendMethod('email')}
+                      className={`flex items-center justify-center gap-2 py-3 rounded-xl border text-sm font-medium transition-colors ${
+                        resendMethod === 'email'
+                          ? 'border-yuzu-400 bg-yuzu-50 text-yuzu-900'
+                          : 'border-brand-border bg-white text-brand-text-secondary hover:bg-neutral-50'
+                      }`}
+                    >
+                      <Mail className="w-4 h-4" /> Email
+                    </button>
+                    <button
+                      onClick={() => setResendMethod('sms')}
+                      className={`flex items-center justify-center gap-2 py-3 rounded-xl border text-sm font-medium transition-colors ${
+                        resendMethod === 'sms'
+                          ? 'border-yuzu-400 bg-yuzu-50 text-yuzu-900'
+                          : 'border-brand-border bg-white text-brand-text-secondary hover:bg-neutral-50'
+                      }`}
+                    >
+                      <Smartphone className="w-4 h-4" /> SMS
+                    </button>
+                  </div>
+                </div>
+
+                {/* Contact detail */}
+                {resendMethod === 'email' ? (
+                  <div>
+                    <label className="block text-sm font-medium text-brand-text mb-1.5">Email address</label>
+                    <input
+                      type="email"
+                      defaultValue={member.email}
+                      className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <label className="block text-sm font-medium text-brand-text mb-1.5">Mobile number</label>
+                    <input
+                      type="tel"
+                      defaultValue={member.phone}
+                      className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm font-mono focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+                    />
+                  </div>
+                )}
+
+                <div className="bg-yuzu-50 border border-yuzu-300/30 rounded-xl p-3">
+                  {resendMethod === 'email' ? (
+                    <p className="text-xs text-yuzu-900">A new invite link will be sent to their email. The previous link will be invalidated.</p>
+                  ) : (
+                    <p className="text-xs text-yuzu-900">An SMS with a download link and one-time code will be sent. Useful for agents who don't have a work email.</p>
+                  )}
+                </div>
+              </div>
+              <div className="px-6 py-4 border-t border-brand-border flex gap-3">
+                <button onClick={() => setResendId(null)} className="flex-1 py-3 rounded-full border border-brand-border text-sm font-semibold text-brand-text-secondary hover:bg-neutral-50">Cancel</button>
+                <button onClick={() => setResendId(null)} className="flex-1 py-3 rounded-full bg-yuzu-400 hover:bg-yuzu-300 text-white text-sm font-semibold shadow-[0_4px_14px_rgba(246,196,83,0.45)]">
+                  Send {resendMethod === 'email' ? 'Email' : 'SMS'}
+                </button>
+              </div>
+            </div>
+          </>
+        )
+      })()}
+
+      {/* Confirm deactivate */}
       {confirmDeleteId && (
         <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50" onClick={() => setConfirmDeleteId(null)}>
           <div className="bg-white rounded-2xl border border-brand-border p-6 w-full max-w-sm shadow-xl" onClick={e => e.stopPropagation()}>
-            <h3 className="text-lg font-semibold text-brand-text mb-2">Remove user?</h3>
-            <p className="text-sm text-brand-text-secondary mb-1">{members.find(m => m.id === confirmDeleteId)?.name} will be removed from the workspace.</p>
-            <p className="text-xs text-brand-text-tertiary mb-5">They will not be billed in the next cycle.</p>
+            <h3 className="text-lg font-semibold text-brand-text mb-2">Deactivate user?</h3>
+            <p className="text-sm text-brand-text-secondary mb-1">{members.find(m => m.id === confirmDeleteId)?.name} will lose access to the workspace.</p>
+            <p className="text-xs text-brand-text-tertiary mb-5">They won't be billed next cycle. You can reactivate them at any time.</p>
             <div className="flex justify-end gap-2">
               <button onClick={() => setConfirmDeleteId(null)} className="px-4 py-2 rounded-full border border-brand-border text-sm font-medium text-brand-text-secondary hover:bg-neutral-50">Cancel</button>
-              <button onClick={() => handleRemove(confirmDeleteId)} className="px-5 py-2 rounded-full bg-red-500 hover:bg-red-600 text-white text-sm font-semibold">Remove</button>
+              <button onClick={() => handleRemove(confirmDeleteId)} className="px-5 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold">Deactivate</button>
             </div>
           </div>
         </div>

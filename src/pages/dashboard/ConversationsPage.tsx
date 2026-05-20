@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import {
   MessageSquare, Mail, Phone, Hash, Search,
   Download, ChevronLeft, ChevronRight, Mic, Circle, X,
-  SlidersHorizontal, ChevronRight as ChevRight, Users, Building2, Tag,
+  SlidersHorizontal, ChevronRight as ChevRight, Users, Building2, Tag, Zap,
 } from 'lucide-react'
 
 type ConvType       = 'dm' | 'channel' | 'whatsapp' | 'email' | 'chat'
@@ -28,6 +28,7 @@ interface Conversation {
   lastActivity: string
   tags: string[]
   unread: boolean
+  aiFlag?: 'urgent' | 'attention'
 }
 
 const CONVERSATIONS: Conversation[] = [
@@ -40,7 +41,7 @@ const CONVERSATIONS: Conversation[] = [
     lastMessage: '3pm works perfectly! See you then 👍',
     assignee: 'Priya Nair', assigneeColor: '#be185d', assigneeInitials: 'PN',
     dept: 'Design', lastActivity: 'Today 12:03 PM',
-    tags: ['brand', 'design'], unread: true,
+    tags: ['brand', 'design'], unread: true, aiFlag: 'attention',
   },
   {
     id: 'dm2', type: 'dm',
@@ -102,7 +103,7 @@ const CONVERSATIONS: Conversation[] = [
     lastMessage: 'Launch is set for next Monday. Will share the timeline doc today.',
     assignee: 'Sarah Jenkins', assigneeColor: '#7c3aed', assigneeInitials: 'SJ',
     dept: 'Product', lastActivity: 'Today 10:35 AM',
-    tags: ['launch', 'brand', 'q3'], unread: true,
+    tags: ['launch', 'brand', 'q3'], unread: true, aiFlag: 'urgent',
   },
   {
     id: 'ch2', type: 'channel',
@@ -131,7 +132,7 @@ const CONVERSATIONS: Conversation[] = [
     status: 'Open',
     assignee: 'Marcus Lee', assigneeColor: '#0891b2', assigneeInitials: 'ML',
     dept: 'Support', lastActivity: 'Today 6:08 PM',
-    tags: ['urgent', 'order'], unread: true,
+    tags: ['urgent', 'order'], unread: true, aiFlag: 'urgent',
   },
   {
     id: 'wa2', type: 'whatsapp',
@@ -162,7 +163,7 @@ const CONVERSATIONS: Conversation[] = [
     status: 'Pending',
     assignee: 'Priya Nair', assigneeColor: '#be185d', assigneeInitials: 'PN',
     dept: 'Billing', lastActivity: 'Today 5:46 PM',
-    tags: ['billing', 'invoice'], unread: true,
+    tags: ['billing', 'invoice'], unread: true, aiFlag: 'attention',
   },
   {
     id: 'em2', type: 'email',
@@ -203,7 +204,7 @@ const CONVERSATIONS: Conversation[] = [
     status: 'Open',
     assignee: 'David Chen', assigneeColor: '#2563eb', assigneeInitials: 'DC',
     dept: 'Support', lastActivity: 'Today 3:10 PM',
-    tags: ['technical', 'api'], unread: true,
+    tags: ['technical', 'api'], unread: true, aiFlag: 'urgent',
   },
 ]
 
@@ -241,7 +242,7 @@ const ALL_ASSIGNEES = [
 
 const ITEMS_PER_PAGE = 8
 
-type FilterCategory = 'status' | 'team' | 'assignee' | 'tag'
+type FilterCategory = 'status' | 'team' | 'assignee' | 'tag' | 'ai'
 
 function ConversationsPage() {
   const [section, setSection]       = useState<Section>('internal')
@@ -252,6 +253,7 @@ function ConversationsPage() {
   const [deptFilter, setDept]       = useState('all')
   const [assigneeFilter, setAssignee] = useState('all')
   const [tagFilter, setTag]         = useState('all')
+  const [aiFlagFilter, setAiFlag]   = useState<'all' | 'urgent' | 'attention'>('all')
   const [search, setSearch]         = useState('')
   const [page, setPage]             = useState(1)
   const [filterOpen, setFilterOpen] = useState(false)
@@ -276,6 +278,7 @@ function ConversationsPage() {
     setDept('all')
     setAssignee('all')
     setTag('all')
+    setAiFlag('all')
     setSearch('')
     setPage(1)
   }
@@ -284,6 +287,7 @@ function ConversationsPage() {
     setDept('all')
     setAssignee('all')
     setTag('all')
+    setAiFlag('all')
     setIntStatus('all')
     setExtStatus('all')
     setPage(1)
@@ -303,6 +307,7 @@ function ConversationsPage() {
     if (deptFilter     !== 'all' && c.dept     !== deptFilter)     return false
     if (assigneeFilter !== 'all' && c.assignee !== assigneeFilter) return false
     if (tagFilter      !== 'all' && !c.tags.includes(tagFilter))   return false
+    if (aiFlagFilter   !== 'all' && c.aiFlag !== aiFlagFilter)     return false
     const q = search.toLowerCase()
     if (q && !c.contact.toLowerCase().includes(q)
           && !c.subject.toLowerCase().includes(q)
@@ -338,14 +343,16 @@ function ConversationsPage() {
     ...(currentStatus  !== 'all' ? [{ key: 'status',   label: `Status is ${currentStatus}`,   clear: () => resetPage(() => section === 'internal' ? setIntStatus('all') : setExtStatus('all')) }] : []),
     ...(deptFilter     !== 'all' ? [{ key: 'dept',     label: `Team is ${deptFilter}`,         clear: () => resetPage(() => setDept('all')) }]      : []),
     ...(assigneeFilter !== 'all' ? [{ key: 'assignee', label: `Assignee is ${assigneeFilter}`, clear: () => resetPage(() => setAssignee('all')) }]  : []),
-    ...(tagFilter      !== 'all' ? [{ key: 'tag',      label: `Tag is ${tagFilter}`,           clear: () => resetPage(() => setTag('all')) }]        : []),
+    ...(tagFilter      !== 'all' ? [{ key: 'tag',      label: `Tag is ${tagFilter}`,                 clear: () => resetPage(() => setTag('all')) }]             : []),
+    ...(aiFlagFilter   !== 'all' ? [{ key: 'ai',       label: `AI: ${aiFlagFilter === 'urgent' ? '🔴 Urgent' : '🟡 Attention'}`, clear: () => resetPage(() => setAiFlag('all')) }] : []),
   ]
 
   const FILTER_CATEGORIES: { key: FilterCategory; label: string; icon: typeof Tag }[] = [
-    { key: 'status',   label: 'Status',   icon: Circle },
-    { key: 'team',     label: 'Team',     icon: Building2 },
-    { key: 'assignee', label: 'Assignee', icon: Users },
-    { key: 'tag',      label: 'Tags',     icon: Tag },
+    { key: 'ai',       label: 'AI Priority', icon: Zap },
+    { key: 'status',   label: 'Status',      icon: Circle },
+    { key: 'team',     label: 'Team',        icon: Building2 },
+    { key: 'assignee', label: 'Assignee',    icon: Users },
+    { key: 'tag',      label: 'Tags',        icon: Tag },
   ]
 
   function renderFilterPanel() {
@@ -355,7 +362,8 @@ function ConversationsPage() {
           <p className="px-3 pt-2.5 pb-1.5 text-[11px] font-semibold text-brand-text-secondary uppercase tracking-wide">Filter by…</p>
           <div className="border-t border-neutral-100 py-1">
             {FILTER_CATEGORIES.map(({ key, label, icon: Icon }) => {
-              const active = (key === 'status'   && currentStatus !== 'all') ||
+              const active = (key === 'ai'       && aiFlagFilter !== 'all') ||
+                             (key === 'status'   && currentStatus !== 'all') ||
                              (key === 'team'     && deptFilter !== 'all') ||
                              (key === 'assignee' && assigneeFilter !== 'all') ||
                              (key === 'tag'      && tagFilter !== 'all')
@@ -377,6 +385,37 @@ function ConversationsPage() {
     }
 
     const back = () => setFilterCategory(null)
+
+    if (filterCategory === 'ai') {
+      const opts: { value: 'urgent' | 'attention'; label: string; color: string }[] = [
+        { value: 'urgent',    label: 'Urgent',    color: 'bg-red-500' },
+        { value: 'attention', label: 'Attention', color: 'bg-yellow-400' },
+      ]
+      return (
+        <>
+          <button onClick={back} className="flex items-center gap-1.5 px-3 pt-2.5 pb-1.5 text-[11px] font-semibold text-brand-text-secondary uppercase tracking-wide hover:text-brand-text transition-colors">
+            <ChevronLeft className="w-3.5 h-3.5" /> AI Priority
+          </button>
+          <div className="border-t border-neutral-100 py-1">
+            {opts.map(opt => {
+              const selected = aiFlagFilter === opt.value
+              return (
+                <button key={opt.value} onClick={() => { resetPage(() => setAiFlag(selected ? 'all' : opt.value)); back() }}
+                  className="w-full flex items-center gap-2.5 px-3 py-2 text-sm hover:bg-neutral-50 transition-colors text-brand-text">
+                  <span className={`w-4 h-4 rounded border flex items-center justify-center shrink-0 ${selected ? 'bg-yuzu-400 border-yuzu-400' : 'border-neutral-300'}`}>
+                    {selected && <span className="w-2 h-2 bg-white rounded-sm" />}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <span className={`w-2 h-2 rounded-full shrink-0 ${opt.color}`} />
+                    {opt.label}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
+        </>
+      )
+    }
 
     if (filterCategory === 'status') {
       const intOpts: InternalStatus[] = ['Unread', 'Read']
@@ -594,6 +633,7 @@ function ConversationsPage() {
         <table className="w-full text-sm min-w-[900px]">
           <thead>
             <tr className="border-b border-brand-border bg-neutral-50 text-xs text-brand-text-secondary">
+              <th className="px-2 py-3 w-6"></th>
               <th className="px-4 py-3 text-left font-medium w-10">Type</th>
               <th className="px-4 py-3 text-left font-medium">Contact / Channel</th>
               <th className="px-4 py-3 text-left font-medium">Subject</th>
@@ -607,7 +647,7 @@ function ConversationsPage() {
           <tbody>
             {paginated.length === 0 && (
               <tr>
-                <td colSpan={8} className="px-4 py-12 text-center text-sm text-brand-text-secondary">
+                <td colSpan={9} className="px-4 py-12 text-center text-sm text-brand-text-secondary">
                   No conversations match your filters.
                 </td>
               </tr>
@@ -615,7 +655,15 @@ function ConversationsPage() {
             {paginated.map(conv => {
               const { icon: Icon, bg, iconColor } = TYPE_CONFIG[conv.type]
               return (
-                <tr key={conv.id} className="border-b border-neutral-100 last:border-0 hover:bg-neutral-50 transition-colors cursor-pointer">
+                <tr key={conv.id} className={`border-b border-neutral-100 last:border-0 hover:bg-neutral-50 transition-colors cursor-pointer ${conv.aiFlag === 'urgent' ? 'border-l-2 border-l-red-400' : conv.aiFlag === 'attention' ? 'border-l-2 border-l-yellow-400' : 'border-l-2 border-l-transparent'}`}>
+                  <td className="pl-2 pr-0 py-3">
+                    {conv.aiFlag && (
+                      <div title={conv.aiFlag === 'urgent' ? 'AI: Urgent' : 'AI: Needs attention'}
+                        className={`w-5 h-5 rounded-full flex items-center justify-center ${conv.aiFlag === 'urgent' ? 'bg-red-100' : 'bg-yellow-100'}`}>
+                        <Zap className={`w-2.5 h-2.5 ${conv.aiFlag === 'urgent' ? 'text-red-500' : 'text-yellow-500'}`} />
+                      </div>
+                    )}
+                  </td>
                   <td className="px-4 py-3">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center ${bg}`}>
                       <Icon className={`w-4 h-4 ${iconColor}`} />

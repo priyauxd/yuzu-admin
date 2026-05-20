@@ -14,7 +14,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Menu,
-  Bot,
   House,
 } from 'lucide-react'
 import Logo from './Logo'
@@ -28,7 +27,6 @@ const NAV_ITEMS = [
   { to: '/app/conversations', icon: MessageSquare, label: 'Conversations' },
   { to: '/app/tasks', icon: CheckSquare, label: 'Tasks' },
   { to: '/app/voice', icon: Headphones, label: 'Voice & Calls' },
-  { to: '/app/ai-agents', icon: Bot, label: 'AI Agents' },
   { to: '/app/settings', icon: Settings, label: 'Settings' },
 ]
 
