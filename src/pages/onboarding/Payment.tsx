@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { CreditCard, Lock, AlertCircle } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
 
-const STEP_LABELS = ['Email', 'Verify', 'Business', 'Organization', 'Profile', 'Plan', 'Payment', 'Workspace']
+const STEP_LABELS = ['Account', 'Verify', 'Business', 'Organization', 'Profile', 'Plan', 'Payment', 'Workspace']
 
 const PLAN_PRICES: Record<string, { name: string; price: number }> = {
   starter: { name: 'Starter', price: 0 },
@@ -73,7 +73,7 @@ export default function Payment() {
             id="cardName"
             type="text"
             placeholder="Full name as on card"
-            className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
           />
         </div>
 
@@ -86,7 +86,7 @@ export default function Payment() {
             type="text"
             placeholder="1234 5678 9012 3456"
             maxLength={19}
-            className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
           />
         </div>
 
@@ -100,7 +100,7 @@ export default function Payment() {
               type="text"
               placeholder="MM/YY"
               maxLength={5}
-              className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             />
           </div>
           <div>
@@ -112,7 +112,7 @@ export default function Payment() {
               type="text"
               placeholder="123"
               maxLength={4}
-              className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             />
           </div>
         </div>

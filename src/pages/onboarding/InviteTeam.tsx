@@ -107,7 +107,7 @@ export default function InviteTeam() {
                         onChange={(e) =>
                           updateInvite(invite.id, 'email', e.target.value)
                         }
-                        className="flex-1 px-3 py-2 rounded-full border border-brand-border bg-neutral-50 text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+                        className="flex-1 px-3 py-2 rounded-xl border border-brand-border bg-neutral-50 text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
                       />
                       <button
                         onClick={() => removeInvite(invite.id)}
@@ -122,7 +122,7 @@ export default function InviteTeam() {
                         onChange={(e) =>
                           updateInvite(invite.id, 'role', e.target.value)
                         }
-                        className="flex-1 px-3 py-2 rounded-full border border-brand-border bg-neutral-50 text-brand-text-tertiary text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
+                        className="flex-1 px-3 py-2 rounded-xl border border-brand-border bg-neutral-50 text-brand-text-tertiary text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
                       >
                         {ROLES.map((role) => (
                           <option key={role} value={role}>

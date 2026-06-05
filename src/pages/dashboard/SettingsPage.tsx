@@ -113,21 +113,21 @@ function ProfileTab() {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-brand-text mb-1.5">First name</label>
-              <input type="text" defaultValue="Priya" className="w-full px-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
+              <input type="text" defaultValue="Priya" className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
             </div>
             <div>
               <label className="block text-sm font-medium text-brand-text mb-1.5">Family name</label>
-              <input type="text" defaultValue="" className="w-full px-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
+              <input type="text" defaultValue="" className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-brand-text mb-1.5">Email</label>
-              <input type="email" defaultValue="priyamvada.s.m@gmail.com" className="w-full px-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
+              <input type="email" defaultValue="priyamvada.s.m@gmail.com" className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
             </div>
             <div>
               <label className="block text-sm font-medium text-brand-text mb-1.5">Phone</label>
-              <input type="tel" defaultValue="+971 55 123 4567" className="w-full px-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
+              <input type="tel" defaultValue="+971 55 123 4567" className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ function ProfileTab() {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-brand-text mb-1.5">Mother tongue</label>
-              <select className="w-full px-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
+              <select className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
                 <option>English</option>
                 <option>العربية (Arabic)</option>
                 <option>हिन्दी (Hindi)</option>
@@ -149,7 +149,7 @@ function ProfileTab() {
             </div>
             <div>
               <label className="block text-sm font-medium text-brand-text mb-1.5">Other language</label>
-              <select className="w-full px-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
+              <select className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
                 <option>Arabic — Intermediate</option>
                 <option>English — Fluent</option>
                 <option>Hindi — Native</option>
@@ -158,7 +158,7 @@ function ProfileTab() {
           </div>
           <div>
             <label className="block text-sm font-medium text-brand-text mb-1.5">Timezone</label>
-            <select className="w-full px-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
+            <select className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
               <option>Dubai (GMT+4)</option>
               <option>Riyadh (GMT+3)</option>
               <option>Mumbai (GMT+5:30)</option>
@@ -193,7 +193,7 @@ function ProfileTab() {
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-brand-text mb-1.5">Default status</label>
-            <select className="w-full px-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
+            <select className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
               <option>Online</option>
               <option>Offline</option>
               <option>Non-working hours</option>
@@ -203,7 +203,7 @@ function ProfileTab() {
           </div>
           <div>
             <label className="block text-sm font-medium text-brand-text mb-1.5">Auto-response message</label>
-            <input type="text" defaultValue="I'll get back to you shortly." className="w-full px-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
+            <input type="text" defaultValue="I'll get back to you shortly." className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
           </div>
         </div>
       </div>
@@ -293,7 +293,7 @@ function UsersTab() {
             key={key}
             onClick={() => { setRoleFilter(key); setPage(1); }}
             className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors ${
-              roleFilter === key ? 'bg-yuzu-400 text-white' : 'bg-white border border-brand-border text-brand-text-secondary hover:bg-neutral-50'
+              roleFilter === key ? 'bg-yuzu-50 text-yuzu-900 border border-yuzu-300/40' : 'bg-white border border-brand-border text-brand-text-secondary hover:bg-neutral-50'
             }`}
           >
             {key === 'all' ? 'All' : key} | {count}
@@ -305,13 +305,13 @@ function UsersTab() {
       <div className="flex items-center gap-3 mb-4">
         <div className="relative flex-1">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-          <input type="text" placeholder="Search" value={search} onChange={(e) => { setSearch(e.target.value); setPage(1); }} className="w-full pl-11 pr-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
+          <input type="text" placeholder="Search" value={search} onChange={(e) => { setSearch(e.target.value); setPage(1); }} className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
         </div>
         <div className="flex items-center border border-brand-border rounded-lg overflow-hidden">
-          <button onClick={() => setViewMode('grid')} className={`p-2 ${viewMode === 'grid' ? 'bg-yuzu-400 text-white' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}>
+          <button onClick={() => setViewMode('grid')} className={`p-2 ${viewMode === 'grid' ? 'bg-yuzu-50 text-yuzu-900' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}>
             <LayoutGrid className="w-4 h-4" />
           </button>
-          <button onClick={() => setViewMode('list')} className={`p-2 ${viewMode === 'list' ? 'bg-yuzu-400 text-white' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}>
+          <button onClick={() => setViewMode('list')} className={`p-2 ${viewMode === 'list' ? 'bg-yuzu-50 text-yuzu-900' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}>
             <List className="w-4 h-4" />
           </button>
         </div>
@@ -362,7 +362,7 @@ function UsersTab() {
               </div>
               {editingId === member.id ? (
                 <div className="flex items-center gap-2 mb-2">
-                  <select value={editRole} onChange={(e) => setEditRole(e.target.value)} className="flex-1 px-3 py-1.5 rounded-full border border-brand-border bg-white text-brand-text text-xs appearance-none">
+                  <select value={editRole} onChange={(e) => setEditRole(e.target.value)} className="flex-1 px-3 py-1.5 rounded-xl border border-brand-border bg-white text-brand-text text-xs appearance-none">
                     {ROLES.map(r => <option key={r} value={r}>{r}</option>)}
                   </select>
                   <button onClick={() => handleSaveRole(member.id)} className="px-3 py-1.5 rounded-full bg-yuzu-400 text-white text-xs font-semibold">Save</button>
@@ -436,7 +436,7 @@ function UsersTab() {
         <div className="flex items-center gap-2">
           <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} className="p-1.5 rounded-lg border border-brand-border hover:bg-neutral-50 disabled:opacity-30 disabled:cursor-not-allowed"><ChevronLeft className="w-4 h-4" /></button>
           {Array.from({ length: totalPages }, (_, i) => i + 1).map(n => (
-            <button key={n} onClick={() => setPage(n)} className={`w-8 h-8 rounded-lg text-xs font-medium ${page === n ? 'bg-yuzu-400 text-white' : 'border border-brand-border hover:bg-neutral-50'}`}>{n}</button>
+            <button key={n} onClick={() => setPage(n)} className={`w-8 h-8 rounded-lg text-xs font-medium ${page === n ? 'bg-yuzu-50 text-yuzu-900 border border-yuzu-300/40' : 'border border-brand-border hover:bg-neutral-50'}`}>{n}</button>
           ))}
           <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages} className="p-1.5 rounded-lg border border-brand-border hover:bg-neutral-50 disabled:opacity-30 disabled:cursor-not-allowed"><ChevronRight className="w-4 h-4" /></button>
           <span className="ml-2 text-xs">Page {page}</span>
@@ -454,12 +454,12 @@ function UsersTab() {
             </div>
             <form onSubmit={handleInvite} className="flex-1 flex flex-col">
               <div className="flex-1 px-6 py-6 space-y-5 overflow-y-auto">
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Full name</label><input type="text" placeholder="e.g. Ahmed Al Maktoum" value={inviteForm.name} onChange={(e) => setInviteForm(f => ({ ...f, name: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required autoFocus /></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Email address</label><input type="email" placeholder="colleague@company.com" value={inviteForm.email} onChange={(e) => setInviteForm(f => ({ ...f, email: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required /></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Phone number</label><input type="tel" placeholder="+971 55 000 0000" value={inviteForm.phone} onChange={(e) => setInviteForm(f => ({ ...f, phone: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" /></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Role</label><select value={inviteForm.role} onChange={(e) => setInviteForm(f => ({ ...f, role: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm appearance-none">{ROLES.map(r => <option key={r} value={r}>{r}</option>)}</select></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Team</label><select value={inviteForm.team} onChange={(e) => setInviteForm(f => ({ ...f, team: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm appearance-none">{INITIAL_TEAMS.map(t => <option key={t.id} value={t.name}>{t.name}</option>)}</select></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Language</label><select value={inviteForm.lang} onChange={(e) => setInviteForm(f => ({ ...f, lang: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm appearance-none"><option>English</option><option>Arabic</option><option>Hindi</option><option>Urdu</option><option>Filipino</option></select></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Full name</label><input type="text" placeholder="e.g. Ahmed Al Maktoum" value={inviteForm.name} onChange={(e) => setInviteForm(f => ({ ...f, name: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required autoFocus /></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Email address</label><input type="email" placeholder="colleague@company.com" value={inviteForm.email} onChange={(e) => setInviteForm(f => ({ ...f, email: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required /></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Phone number</label><input type="tel" placeholder="+971 55 000 0000" value={inviteForm.phone} onChange={(e) => setInviteForm(f => ({ ...f, phone: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" /></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Role</label><select value={inviteForm.role} onChange={(e) => setInviteForm(f => ({ ...f, role: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none">{ROLES.map(r => <option key={r} value={r}>{r}</option>)}</select></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Team</label><select value={inviteForm.team} onChange={(e) => setInviteForm(f => ({ ...f, team: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none">{INITIAL_TEAMS.map(t => <option key={t.id} value={t.name}>{t.name}</option>)}</select></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Language</label><select value={inviteForm.lang} onChange={(e) => setInviteForm(f => ({ ...f, lang: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none"><option>English</option><option>Arabic</option><option>Hindi</option><option>Urdu</option><option>Filipino</option></select></div>
                 <div className="bg-yuzu-50 border border-yuzu-300/30 rounded-xl p-3"><p className="text-xs text-yuzu-900">An invite link will be sent to their email. They&apos;ll verify via UAE Pass or OTP and join the workspace.</p></div>
               </div>
               <div className="px-6 py-4 border-t border-brand-border flex gap-3">
@@ -532,7 +532,7 @@ function UsersTab() {
                     <input
                       type="email"
                       defaultValue={member.email}
-                      className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+                      className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
                     />
                   </div>
                 ) : (
@@ -541,7 +541,7 @@ function UsersTab() {
                     <input
                       type="tel"
                       defaultValue={member.phone}
-                      className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm font-mono focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+                      className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm font-mono focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
                     />
                   </div>
                 )}
@@ -623,11 +623,11 @@ function TeamsTab() {
       <div className="flex items-center gap-3 mb-4">
         <div className="relative flex-1">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-          <input type="text" placeholder="Search teams" value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-11 pr-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
+          <input type="text" placeholder="Search teams" value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
         </div>
         <div className="flex items-center border border-brand-border rounded-lg overflow-hidden">
-          <button onClick={() => setViewMode('grid')} className={`p-2 ${viewMode === 'grid' ? 'bg-yuzu-400 text-white' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}><LayoutGrid className="w-4 h-4" /></button>
-          <button onClick={() => setViewMode('list')} className={`p-2 ${viewMode === 'list' ? 'bg-yuzu-400 text-white' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}><List className="w-4 h-4" /></button>
+          <button onClick={() => setViewMode('grid')} className={`p-2 ${viewMode === 'grid' ? 'bg-yuzu-50 text-yuzu-900' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}><LayoutGrid className="w-4 h-4" /></button>
+          <button onClick={() => setViewMode('list')} className={`p-2 ${viewMode === 'list' ? 'bg-yuzu-50 text-yuzu-900' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}><List className="w-4 h-4" /></button>
         </div>
         <button onClick={() => setShowCreate(true)} className="flex items-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-white font-semibold px-4 py-2.5 rounded-full text-sm transition-colors shadow-[0_4px_14px_rgba(246,196,83,0.45)] shrink-0">
           <Plus className="w-4 h-4" /> New Team
@@ -723,9 +723,9 @@ function TeamsTab() {
             </div>
             <form onSubmit={handleCreate} className="flex-1 flex flex-col">
               <div className="flex-1 px-6 py-6 space-y-5 overflow-y-auto">
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Team name</label><input type="text" placeholder="e.g. Sales, Support, Logistics" value={createForm.name} onChange={(e) => setCreateForm(f => ({ ...f, name: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required autoFocus /></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Description</label><input type="text" placeholder="What does this team handle?" value={createForm.description} onChange={(e) => setCreateForm(f => ({ ...f, description: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" /></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Routing type</label><select value={createForm.type} onChange={(e) => setCreateForm(f => ({ ...f, type: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm appearance-none"><option>Round Robin</option><option>Skill Based</option><option>Sequential</option></select></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Team name</label><input type="text" placeholder="e.g. Sales, Support, Logistics" value={createForm.name} onChange={(e) => setCreateForm(f => ({ ...f, name: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required autoFocus /></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Description</label><input type="text" placeholder="What does this team handle?" value={createForm.description} onChange={(e) => setCreateForm(f => ({ ...f, description: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" /></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Routing type</label><select value={createForm.type} onChange={(e) => setCreateForm(f => ({ ...f, type: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none"><option>Round Robin</option><option>Skill Based</option><option>Sequential</option></select></div>
                 <div className="bg-yuzu-50 border border-yuzu-300/30 rounded-xl p-3"><p className="text-xs text-yuzu-900">Teams are used for routing calls, assigning conversations, and managing permissions.</p></div>
               </div>
               <div className="px-6 py-4 border-t border-brand-border flex gap-3">
@@ -828,7 +828,7 @@ function NumbersTab() {
     <div className="flex flex-col h-[calc(100vh-120px)]">
       <div className="flex items-center gap-2 mb-4">
         {Object.entries(filterCounts).map(([key, count]) => (
-          <button key={key} onClick={() => setFilter(key as typeof filter)} className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors ${filter === key ? 'bg-yuzu-400 text-white' : 'bg-white border border-brand-border text-brand-text-secondary hover:bg-neutral-50'}`}>
+          <button key={key} onClick={() => setFilter(key as typeof filter)} className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors ${filter === key ? 'bg-yuzu-50 text-yuzu-900 border border-yuzu-300/40' : 'bg-white border border-brand-border text-brand-text-secondary hover:bg-neutral-50'}`}>
             {key.charAt(0).toUpperCase() + key.slice(1)} | {count}
           </button>
         ))}
@@ -837,11 +837,11 @@ function NumbersTab() {
       <div className="flex items-center gap-3 mb-4">
         <div className="relative flex-1">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-          <input type="text" placeholder="Search numbers" value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-11 pr-4 py-2.5 rounded-full border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
+          <input type="text" placeholder="Search numbers" value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" />
         </div>
         <div className="flex items-center border border-brand-border rounded-lg overflow-hidden">
-          <button onClick={() => setViewMode('grid')} className={`p-2 ${viewMode === 'grid' ? 'bg-yuzu-400 text-white' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}><LayoutGrid className="w-4 h-4" /></button>
-          <button onClick={() => setViewMode('list')} className={`p-2 ${viewMode === 'list' ? 'bg-yuzu-400 text-white' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}><List className="w-4 h-4" /></button>
+          <button onClick={() => setViewMode('grid')} className={`p-2 ${viewMode === 'grid' ? 'bg-yuzu-50 text-yuzu-900' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}><LayoutGrid className="w-4 h-4" /></button>
+          <button onClick={() => setViewMode('list')} className={`p-2 ${viewMode === 'list' ? 'bg-yuzu-50 text-yuzu-900' : 'bg-white text-neutral-400 hover:bg-neutral-50'}`}><List className="w-4 h-4" /></button>
         </div>
         <button onClick={() => setShowAdd(true)} className="flex items-center gap-2 bg-yuzu-400 hover:bg-yuzu-300 text-white font-semibold px-4 py-2.5 rounded-full text-sm transition-colors shadow-[0_4px_14px_rgba(246,196,83,0.45)] shrink-0">
           <Plus className="w-4 h-4" /> Add Number
@@ -873,10 +873,10 @@ function NumbersTab() {
               </div>
               {editingId === did.id ? (
                 <div className="space-y-2">
-                  <select value={editAssign.assignedType} onChange={(e) => setEditAssign(a => ({ ...a, assignedType: e.target.value as 'team' | 'user' }))} className="w-full px-3 py-2 rounded-full border border-brand-border bg-white text-brand-text text-xs appearance-none">
+                  <select value={editAssign.assignedType} onChange={(e) => setEditAssign(a => ({ ...a, assignedType: e.target.value as 'team' | 'user' }))} className="w-full px-3 py-2 rounded-xl border border-brand-border bg-white text-brand-text text-xs appearance-none">
                     <option value="team">Team</option><option value="user">User</option>
                   </select>
-                  <select value={editAssign.assignedTo} onChange={(e) => setEditAssign(a => ({ ...a, assignedTo: e.target.value }))} className="w-full px-3 py-2 rounded-full border border-brand-border bg-white text-brand-text text-xs appearance-none">
+                  <select value={editAssign.assignedTo} onChange={(e) => setEditAssign(a => ({ ...a, assignedTo: e.target.value }))} className="w-full px-3 py-2 rounded-xl border border-brand-border bg-white text-brand-text text-xs appearance-none">
                     <option value="">Unassigned</option>
                     {editAssign.assignedType === 'team'
                       ? INITIAL_TEAMS.map(t => <option key={t.id} value={t.name}>{t.name}</option>)
@@ -949,12 +949,12 @@ function NumbersTab() {
             </div>
             <form onSubmit={handleAdd} className="flex-1 flex flex-col">
               <div className="flex-1 px-6 py-6 space-y-5 overflow-y-auto">
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Phone number</label><input type="tel" placeholder="+971 4 XXX XXXX" value={addForm.number} onChange={(e) => setAddForm(f => ({ ...f, number: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm font-mono placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required autoFocus /></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Label</label><input type="text" placeholder="e.g. Main Line, Sales Hotline" value={addForm.label} onChange={(e) => setAddForm(f => ({ ...f, label: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" /></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Country</label><select value={addForm.country} onChange={(e) => setAddForm(f => ({ ...f, country: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm appearance-none"><option>UAE</option><option>KSA</option><option>Bahrain</option><option>Qatar</option><option>Oman</option><option>Kuwait</option></select></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Assign to</label><select value={addForm.assignedType} onChange={(e) => setAddForm(f => ({ ...f, assignedType: e.target.value as 'team' | 'user' }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm appearance-none"><option value="team">Team</option><option value="user">User</option></select></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Phone number</label><input type="tel" placeholder="+971 4 XXX XXXX" value={addForm.number} onChange={(e) => setAddForm(f => ({ ...f, number: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm font-mono placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required autoFocus /></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Label</label><input type="text" placeholder="e.g. Main Line, Sales Hotline" value={addForm.label} onChange={(e) => setAddForm(f => ({ ...f, label: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" /></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Country</label><select value={addForm.country} onChange={(e) => setAddForm(f => ({ ...f, country: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none"><option>UAE</option><option>KSA</option><option>Bahrain</option><option>Qatar</option><option>Oman</option><option>Kuwait</option></select></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Assign to</label><select value={addForm.assignedType} onChange={(e) => setAddForm(f => ({ ...f, assignedType: e.target.value as 'team' | 'user' }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none"><option value="team">Team</option><option value="user">User</option></select></div>
                 <div><label className="block text-sm font-medium text-brand-text mb-1.5">{addForm.assignedType === 'team' ? 'Select team' : 'Select user'}</label>
-                  <select value={addForm.assignedTo} onChange={(e) => setAddForm(f => ({ ...f, assignedTo: e.target.value }))} className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text text-sm appearance-none">
+                  <select value={addForm.assignedTo} onChange={(e) => setAddForm(f => ({ ...f, assignedTo: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none">
                     <option value="">Leave unassigned</option>
                     {addForm.assignedType === 'team'
                       ? INITIAL_TEAMS.map(t => <option key={t.id} value={t.name}>{t.name}</option>)

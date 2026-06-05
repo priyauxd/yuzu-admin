@@ -21,17 +21,15 @@ export default function OnboardingLayout({
 }: OnboardingLayoutProps) {
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <header className="px-6 py-5 flex items-center justify-between">
+      <header className="px-6 py-5 flex items-center">
         <Logo />
-        {showSteps && (
-          <span className="text-sm text-brand-text-secondary">
-            Step {currentStep} of {totalSteps}
-          </span>
-        )}
       </header>
 
       {showSteps && (
-        <div className="px-6 pb-4">
+        <div className="px-6 pb-4 flex flex-col items-center gap-3">
+          <span className="text-sm text-brand-text-secondary">
+            Step {currentStep} of {totalSteps}
+          </span>
           <StepIndicator
             currentStep={currentStep}
             totalSteps={totalSteps}

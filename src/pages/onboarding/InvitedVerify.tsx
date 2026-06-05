@@ -5,11 +5,11 @@ import Logo from '../../components/Logo'
 
 export default function InvitedVerify() {
   const navigate = useNavigate()
-  const [method, setMethod] = useState<'uaepass' | 'otp' | null>(null)
+  const [method, setMethod] = useState<'uaepass' | 'otp' | 'whatsapp' | null>(null)
   const [displayName, setDisplayName] = useState('')
   const [step, setStep] = useState<'choose' | 'name'>('choose')
 
-  const handleVerify = (m: 'uaepass' | 'otp') => {
+  const handleVerify = (m: 'uaepass' | 'otp' | 'whatsapp') => {
     setMethod(m)
     setStep('name')
   }
@@ -66,7 +66,22 @@ export default function InvitedVerify() {
                       Email OTP
                     </h3>
                     <p className="text-sm text-brand-text-secondary">
-                      Fallback &middot; Code sent to your email
+                      Code sent to your email
+                    </p>
+                  </div>
+                </button>
+
+                <button
+                  onClick={() => handleVerify('whatsapp')}
+                  className="w-full flex items-center gap-4 p-4 rounded-2xl border-2 border-brand-border bg-white hover:border-yuzu-400 hover:bg-yuzu-50 transition-all text-left"
+                >
+                  <span className="text-2xl">💬</span>
+                  <div>
+                    <h3 className="font-semibold text-brand-text">
+                      WhatsApp OTP
+                    </h3>
+                    <p className="text-sm text-brand-text-secondary">
+                      Code sent via WhatsApp to your mobile
                     </p>
                   </div>
                 </button>
@@ -100,7 +115,7 @@ export default function InvitedVerify() {
                     placeholder="Your name"
                     value={displayName}
                     onChange={(e) => setDisplayName(e.target.value)}
-                    className="w-full px-4 py-3 rounded-full border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+                    className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
                     autoFocus
                   />
                 </div>

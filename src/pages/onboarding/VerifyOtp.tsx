@@ -3,13 +3,22 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { ShieldCheck } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
 
-const STEP_LABELS = ['Email', 'Verify', 'Setup', 'Plan', 'Done']
+const STEP_LABELS = ['Account', 'Verify', 'Setup', 'Plan', 'Done']
 const OTP_LENGTH = 6
+
+interface LocationState {
+  email?: string
+  phone?: string
+  method?: 'email' | 'mobile'
+}
 
 export default function VerifyOtp() {
   const navigate = useNavigate()
   const location = useLocation()
-  const email = (location.state as { email?: string })?.email || 'your email'
+  const state = (location.state as LocationState) || {}
+  const isWhatsApp = state.method === 'mobile'
+  const identifier = isWhatsApp ? state.phone || 'your number' : state.email || 'your email'
+
   const [otp, setOtp] = useState<string[]>(Array(OTP_LENGTH).fill(''))
   const [error, setError] = useState('')
   const inputRefs = useRef<(HTMLInputElement | null)[]>([])
@@ -42,7 +51,7 @@ export default function VerifyOtp() {
       setError('Please enter the full verification code')
       return
     }
-    navigate('/onboarding/profile', { state: { email } })
+    navigate('/onboarding/profile', { state: { email: state.email, phone: state.phone, method: state.method } })
   }
 
   return (
@@ -56,11 +65,12 @@ export default function VerifyOtp() {
           <ShieldCheck className="w-7 h-7 text-yuzu-900" />
         </div>
         <h1 className="text-2xl font-bold text-brand-text mb-2">
-          Check your email
+          {isWhatsApp ? 'Check your WhatsApp' : 'Check your email'}
         </h1>
         <p className="text-brand-text-secondary">
           We sent a 6-digit code to{' '}
-          <span className="font-medium text-brand-text">{email}</span>
+          <span className="font-medium text-brand-text">{identifier}</span>
+          {isWhatsApp && ' via WhatsApp'}
         </p>
       </div>
 
@@ -76,7 +86,7 @@ export default function VerifyOtp() {
               value={digit}
               onChange={(e) => handleChange(i, e.target.value)}
               onKeyDown={(e) => handleKeyDown(i, e)}
-              className="w-14 h-14 text-center text-xl font-semibold rounded-full border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
+              className="w-14 h-14 text-center text-xl font-semibold rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition"
             />
           ))}
         </div>
@@ -95,7 +105,7 @@ export default function VerifyOtp() {
       <p className="mt-6 text-center text-sm text-brand-text-secondary">
         Didn&apos;t receive the code?{' '}
         <button className="text-yuzu-900 hover:text-yuzu-800 font-medium">
-          Resend
+          Resend{isWhatsApp ? ' via WhatsApp' : ''}
         </button>
       </p>
     </OnboardingLayout>

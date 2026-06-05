@@ -11,7 +11,9 @@ export default {
           25: '#F5EDE7',
         },
         yuzu: {
-          50: '#fffbeb',
+          25:  '#faf7f4',
+          50:  '#fffbeb',
+          75:  '#fff3c4',
           100: '#f5ede7',
           200: '#fef08a',
           300: '#fcd34d',
@@ -21,6 +23,11 @@ export default {
           700: '#a16207',
           800: '#601919',
           900: '#4c1515',
+          950: '#2a0a0a',
+          'amber-text': '#7a5510',
+        },
+        stem: {
+          400: '#00ad5e',
         },
         brand: {
           bg: '#ffffff',

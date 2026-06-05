@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   User, CreditCard, Plug, ArrowUpRight,
-  MessageSquare, Bot, BookOpen, Lightbulb, Rocket, GraduationCap,
+  MessageSquare, BookOpen, Lightbulb, Rocket, GraduationCap,
   Monitor, Smartphone, Download, X,
   Headphones, Users, Zap, BarChart3, Radio, Workflow,
   LayoutDashboard, CheckSquare, Circle, Clock,
@@ -10,7 +10,6 @@ import {
 import Confetti from '../../components/Confetti'
 
 const WELCOME_FEATURES = [
-  { label: 'AI Agent', icon: Bot, color: 'bg-blue-50 text-blue-600' },
   { label: 'Voice & Calls', icon: Headphones, color: 'bg-purple-50 text-purple-600' },
   { label: 'Integrations', icon: Plug, color: 'bg-green-50 text-green-600' },
   { label: 'Workflows', icon: Workflow, color: 'bg-orange-50 text-orange-600' },
@@ -121,14 +120,6 @@ export default function Dashboard() {
               <span className="text-sm font-semibold text-brand-text">2</span>
               <a href="#/app/settings" className="ml-auto text-xs font-medium text-brand-text border border-brand-border rounded-full px-3 py-1 hover:bg-neutral-50 transition-colors">View</a>
             </div>
-          </div>
-          <div className="mt-5 p-3.5 bg-yuzu-50 rounded-xl border border-yuzu-300/30">
-            <div className="flex items-center gap-2 mb-1">
-              <Bot className="w-4 h-4 text-yuzu-900" />
-              <span className="text-sm font-semibold text-yuzu-900">AI Agent free minutes left: 150</span>
-            </div>
-            <p className="text-xs text-yuzu-900/70 mb-2">Let AI answer, qualify, and route calls automatically.</p>
-            <button className="text-xs font-medium text-yuzu-900 border border-yuzu-400 rounded-full px-3 py-1 hover:bg-yuzu-100 transition-colors">Get started</button>
           </div>
         </div>
 
@@ -272,31 +263,6 @@ export default function Dashboard() {
         <ArrowUpRight className="w-4 h-4 text-neutral-400 group-hover:text-yuzu-900 transition-colors shrink-0" />
       </button>
 
-      {/* Download Apps */}
-      <div className="mb-8">
-        <h2 className="text-base font-semibold text-brand-text mb-3">Download yuzu</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {[
-            { title: 'Desktop App', desc: 'For macOS and Windows', icon: Monitor, action: 'Download' },
-            { title: 'iOS App', desc: 'iPhone & iPad', icon: Smartphone, action: 'App Store' },
-            { title: 'Android App', desc: 'Phone & tablet', icon: Smartphone, action: 'Google Play' },
-          ].map(({ title, desc, icon: Icon, action }) => (
-            <div key={title} className="bg-white rounded-2xl border border-brand-border p-4 flex items-center gap-4 hover:shadow-sm hover:border-yuzu-400/40 transition-all cursor-pointer group">
-              <div className="w-11 h-11 rounded-xl bg-yuzu-50 border border-yuzu-300/30 flex items-center justify-center shrink-0">
-                <Icon className="w-5 h-5 text-yuzu-900" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-brand-text group-hover:text-yuzu-900 transition-colors">{title}</p>
-                <p className="text-xs text-brand-text-secondary">{desc}</p>
-              </div>
-              <span className="text-xs font-medium text-yuzu-900 border border-yuzu-400 rounded-full px-3 py-1 hover:bg-yuzu-100 transition-colors flex items-center gap-1 shrink-0">
-                <Download className="w-3 h-3" />{action}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Resources */}
       <div className="mb-8">
         <h2 className="text-base font-semibold text-brand-text mb-3">Resources for you</h2>
@@ -344,6 +310,24 @@ export default function Dashboard() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Download footer */}
+      <div className="border-t border-brand-border pt-4 pb-2 flex flex-wrap items-center gap-x-6 gap-y-2">
+        <span className="text-xs text-brand-text-secondary flex items-center gap-1.5">
+          <Download className="w-3.5 h-3.5" /> Download yuzu:
+        </span>
+        {[
+          { label: 'Desktop', icon: Monitor, action: 'macOS & Windows' },
+          { label: 'iOS', icon: Smartphone, action: 'App Store' },
+          { label: 'Android', icon: Smartphone, action: 'Google Play' },
+        ].map(({ label, icon: Icon, action }) => (
+          <button key={label} className="flex items-center gap-1.5 text-xs text-yuzu-900 hover:text-yuzu-800 font-medium transition-colors">
+            <Icon className="w-3.5 h-3.5" />
+            {label}
+            <span className="text-brand-text-secondary font-normal">({action})</span>
+          </button>
+        ))}
       </div>
     </div>
   )

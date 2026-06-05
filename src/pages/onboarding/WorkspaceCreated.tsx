@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, Users, MessageSquare, Mic } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
 
-const STEP_LABELS = ['Email', 'Verify', 'Setup', 'Plan', 'Done']
+const STEP_LABELS = ['Account', 'Verify', 'Setup', 'Plan', 'Done']
 
 export default function WorkspaceCreated() {
   const navigate = useNavigate()

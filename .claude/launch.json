@@ -3,9 +3,17 @@
   "configurations": [
     {
       "name": "yuzu-dev",
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["node_modules/.bin/vite", "--port", "5173"],
-      "port": 5173
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite"],
+      "port": 5173,
+      "autoPort": true
+    },
+    {
+      "name": "yuzu-desktop",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "/Users/priyamvada/Documents", "-p", "3001", "--no-clipboard"],
+      "port": 3001,
+      "autoPort": false
     }
   ]
 }

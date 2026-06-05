@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
 
-const STEP_LABELS = ['Email', 'Verify', 'Setup', 'Plan', 'Done']
+const STEP_LABELS = ['Account', 'Verify', 'Setup', 'Plan', 'Done']
 
 const INDUSTRIES = [
   { value: '', label: 'Choose one' },

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowRight, ChevronLeft } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
 
-const STEP_LABELS = ['Email', 'Verify', 'Business', 'Organization', 'Profile', 'Plan', 'Payment', 'Workspace']
+const STEP_LABELS = ['Account', 'Verify', 'Business', 'Organization', 'Profile', 'Plan', 'Payment', 'Workspace']
 
 const CUSTOMER_TYPES = [
   { value: '', label: 'Choose one' },
