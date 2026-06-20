@@ -10,8 +10,10 @@ import {
   UserPlus,
 } from 'lucide-react'
 import Logo from '../../components/Logo'
+import Dropdown from '../../components/Dropdown'
 
 const ROLES = ['Member', 'Field Member', 'Support Agent', 'Ops Manager']
+const ROLE_OPTIONS = ROLES.map((r) => ({ value: r, label: r }))
 
 interface Invite {
   id: string
@@ -117,19 +119,14 @@ export default function InviteTeam() {
                       </button>
                     </div>
                     <div className="flex gap-2">
-                      <select
-                        value={invite.role}
-                        onChange={(e) =>
-                          updateInvite(invite.id, 'role', e.target.value)
-                        }
-                        className="flex-1 px-3 py-2 rounded-xl border border-brand-border bg-neutral-50 text-brand-text-tertiary text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
-                      >
-                        {ROLES.map((role) => (
-                          <option key={role} value={role}>
-                            {role}
-                          </option>
-                        ))}
-                      </select>
+                      <div className="flex-1">
+                        <Dropdown
+                          options={ROLE_OPTIONS}
+                          value={invite.role}
+                          onChange={(v) => updateInvite(invite.id, 'role', v)}
+                          size="sm"
+                        />
+                      </div>
                       <div className="flex gap-1">
                         {(
                           [

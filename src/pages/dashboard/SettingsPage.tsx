@@ -8,6 +8,7 @@ import {
   UserX, Send, Smartphone,
 } from 'lucide-react'
 import Toggle from '../../components/Toggle'
+import Dropdown from '../../components/Dropdown'
 
 const TABS = [
   { id: 'profile', label: 'Profile', icon: User },
@@ -104,7 +105,63 @@ const CONNECTORS = [
 
 const ITEMS_PER_PAGE = 6
 
+const MOTHER_TONGUE_OPTIONS = [
+  { value: 'English', label: 'English' },
+  { value: 'Arabic', label: 'العربية (Arabic)' },
+  { value: 'Hindi', label: 'हिन्दी (Hindi)' },
+  { value: 'Urdu', label: 'اردو (Urdu)' },
+  { value: 'Filipino', label: 'Filipino (Tagalog)' },
+]
+const OTHER_LANG_OPTIONS = [
+  { value: 'Arabic — Intermediate', label: 'Arabic — Intermediate' },
+  { value: 'English — Fluent', label: 'English — Fluent' },
+  { value: 'Hindi — Native', label: 'Hindi — Native' },
+]
+const TIMEZONE_OPTIONS = [
+  { value: 'Dubai (GMT+4)', label: 'Dubai (GMT+4)' },
+  { value: 'Riyadh (GMT+3)', label: 'Riyadh (GMT+3)' },
+  { value: 'Mumbai (GMT+5:30)', label: 'Mumbai (GMT+5:30)' },
+  { value: 'London (GMT+0)', label: 'London (GMT+0)' },
+]
+const STATUS_OPTIONS = [
+  { value: 'Online', label: 'Online' },
+  { value: 'Offline', label: 'Offline' },
+  { value: 'Non-working hours', label: 'Non-working hours' },
+  { value: 'Break', label: 'Break' },
+  { value: 'In Meeting', label: 'In Meeting' },
+]
+const ROLE_OPTIONS = ROLES.map((r) => ({ value: r, label: r }))
+const LANG_OPTIONS = [
+  { value: 'English', label: 'English' },
+  { value: 'Arabic', label: 'Arabic' },
+  { value: 'Hindi', label: 'Hindi' },
+  { value: 'Urdu', label: 'Urdu' },
+  { value: 'Filipino', label: 'Filipino' },
+]
+const ROUTING_TYPE_OPTIONS = [
+  { value: 'Round Robin', label: 'Round Robin' },
+  { value: 'Skill Based', label: 'Skill Based' },
+  { value: 'Sequential', label: 'Sequential' },
+]
+const ASSIGN_TYPE_OPTIONS = [
+  { value: 'team', label: 'Team' },
+  { value: 'user', label: 'User' },
+]
+const COUNTRY_OPTIONS = [
+  { value: 'UAE', label: 'UAE' },
+  { value: 'KSA', label: 'KSA' },
+  { value: 'Bahrain', label: 'Bahrain' },
+  { value: 'Qatar', label: 'Qatar' },
+  { value: 'Oman', label: 'Oman' },
+  { value: 'Kuwait', label: 'Kuwait' },
+]
+
 function ProfileTab() {
+  const [motherTongue, setMotherTongue] = useState('English')
+  const [otherLang, setOtherLang] = useState('Arabic — Intermediate')
+  const [timezone, setTimezone] = useState('Dubai (GMT+4)')
+  const [defaultStatus, setDefaultStatus] = useState('Online')
+
   return (
     <div className="space-y-6">
       <div>
@@ -139,31 +196,16 @@ function ProfileTab() {
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-brand-text mb-1.5">Mother tongue</label>
-              <select className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
-                <option>English</option>
-                <option>العربية (Arabic)</option>
-                <option>हिन्दी (Hindi)</option>
-                <option>اردو (Urdu)</option>
-                <option>Filipino (Tagalog)</option>
-              </select>
+              <Dropdown options={MOTHER_TONGUE_OPTIONS} value={motherTongue} onChange={setMotherTongue} />
             </div>
             <div>
               <label className="block text-sm font-medium text-brand-text mb-1.5">Other language</label>
-              <select className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
-                <option>Arabic — Intermediate</option>
-                <option>English — Fluent</option>
-                <option>Hindi — Native</option>
-              </select>
+              <Dropdown options={OTHER_LANG_OPTIONS} value={otherLang} onChange={setOtherLang} />
             </div>
           </div>
           <div>
             <label className="block text-sm font-medium text-brand-text mb-1.5">Timezone</label>
-            <select className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
-              <option>Dubai (GMT+4)</option>
-              <option>Riyadh (GMT+3)</option>
-              <option>Mumbai (GMT+5:30)</option>
-              <option>London (GMT+0)</option>
-            </select>
+            <Dropdown options={TIMEZONE_OPTIONS} value={timezone} onChange={setTimezone} />
           </div>
         </div>
       </div>
@@ -193,13 +235,7 @@ function ProfileTab() {
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-brand-text mb-1.5">Default status</label>
-            <select className="w-full px-4 py-2.5 rounded-xl border border-brand-border bg-white text-brand-text text-sm focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none">
-              <option>Online</option>
-              <option>Offline</option>
-              <option>Non-working hours</option>
-              <option>Break</option>
-              <option>In Meeting</option>
-            </select>
+            <Dropdown options={STATUS_OPTIONS} value={defaultStatus} onChange={setDefaultStatus} />
           </div>
           <div>
             <label className="block text-sm font-medium text-brand-text mb-1.5">Auto-response message</label>
@@ -362,9 +398,9 @@ function UsersTab() {
               </div>
               {editingId === member.id ? (
                 <div className="flex items-center gap-2 mb-2">
-                  <select value={editRole} onChange={(e) => setEditRole(e.target.value)} className="flex-1 px-3 py-1.5 rounded-xl border border-brand-border bg-white text-brand-text text-xs appearance-none">
-                    {ROLES.map(r => <option key={r} value={r}>{r}</option>)}
-                  </select>
+                  <div className="flex-1">
+                    <Dropdown options={ROLE_OPTIONS} value={editRole} onChange={setEditRole} size="sm" />
+                  </div>
                   <button onClick={() => handleSaveRole(member.id)} className="px-3 py-1.5 rounded-full bg-yuzu-400 text-white text-xs font-semibold">Save</button>
                   <button onClick={() => setEditingId(null)} className="px-3 py-1.5 rounded-full border border-brand-border text-xs text-brand-text-secondary">Cancel</button>
                 </div>
@@ -457,9 +493,9 @@ function UsersTab() {
                 <div><label className="block text-sm font-medium text-brand-text mb-1.5">Full name</label><input type="text" placeholder="e.g. Ahmed Al Maktoum" value={inviteForm.name} onChange={(e) => setInviteForm(f => ({ ...f, name: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required autoFocus /></div>
                 <div><label className="block text-sm font-medium text-brand-text mb-1.5">Email address</label><input type="email" placeholder="colleague@company.com" value={inviteForm.email} onChange={(e) => setInviteForm(f => ({ ...f, email: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required /></div>
                 <div><label className="block text-sm font-medium text-brand-text mb-1.5">Phone number</label><input type="tel" placeholder="+971 55 000 0000" value={inviteForm.phone} onChange={(e) => setInviteForm(f => ({ ...f, phone: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" /></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Role</label><select value={inviteForm.role} onChange={(e) => setInviteForm(f => ({ ...f, role: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none">{ROLES.map(r => <option key={r} value={r}>{r}</option>)}</select></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Team</label><select value={inviteForm.team} onChange={(e) => setInviteForm(f => ({ ...f, team: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none">{INITIAL_TEAMS.map(t => <option key={t.id} value={t.name}>{t.name}</option>)}</select></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Language</label><select value={inviteForm.lang} onChange={(e) => setInviteForm(f => ({ ...f, lang: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none"><option>English</option><option>Arabic</option><option>Hindi</option><option>Urdu</option><option>Filipino</option></select></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Role</label><Dropdown options={ROLE_OPTIONS} value={inviteForm.role} onChange={(v) => setInviteForm(f => ({ ...f, role: v }))} /></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Team</label><Dropdown options={INITIAL_TEAMS.map(t => ({ value: t.name, label: t.name }))} value={inviteForm.team} onChange={(v) => setInviteForm(f => ({ ...f, team: v }))} /></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Language</label><Dropdown options={LANG_OPTIONS} value={inviteForm.lang} onChange={(v) => setInviteForm(f => ({ ...f, lang: v }))} /></div>
                 <div className="bg-yuzu-50 border border-yuzu-300/30 rounded-xl p-3"><p className="text-xs text-yuzu-900">An invite link will be sent to their email. They&apos;ll verify via UAE Pass or OTP and join the workspace.</p></div>
               </div>
               <div className="px-6 py-4 border-t border-brand-border flex gap-3">
@@ -725,7 +761,7 @@ function TeamsTab() {
               <div className="flex-1 px-6 py-6 space-y-5 overflow-y-auto">
                 <div><label className="block text-sm font-medium text-brand-text mb-1.5">Team name</label><input type="text" placeholder="e.g. Sales, Support, Logistics" value={createForm.name} onChange={(e) => setCreateForm(f => ({ ...f, name: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required autoFocus /></div>
                 <div><label className="block text-sm font-medium text-brand-text mb-1.5">Description</label><input type="text" placeholder="What does this team handle?" value={createForm.description} onChange={(e) => setCreateForm(f => ({ ...f, description: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" /></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Routing type</label><select value={createForm.type} onChange={(e) => setCreateForm(f => ({ ...f, type: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none"><option>Round Robin</option><option>Skill Based</option><option>Sequential</option></select></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Routing type</label><Dropdown options={ROUTING_TYPE_OPTIONS} value={createForm.type} onChange={(v) => setCreateForm(f => ({ ...f, type: v }))} /></div>
                 <div className="bg-yuzu-50 border border-yuzu-300/30 rounded-xl p-3"><p className="text-xs text-yuzu-900">Teams are used for routing calls, assigning conversations, and managing permissions.</p></div>
               </div>
               <div className="px-6 py-4 border-t border-brand-border flex gap-3">
@@ -873,16 +909,18 @@ function NumbersTab() {
               </div>
               {editingId === did.id ? (
                 <div className="space-y-2">
-                  <select value={editAssign.assignedType} onChange={(e) => setEditAssign(a => ({ ...a, assignedType: e.target.value as 'team' | 'user' }))} className="w-full px-3 py-2 rounded-xl border border-brand-border bg-white text-brand-text text-xs appearance-none">
-                    <option value="team">Team</option><option value="user">User</option>
-                  </select>
-                  <select value={editAssign.assignedTo} onChange={(e) => setEditAssign(a => ({ ...a, assignedTo: e.target.value }))} className="w-full px-3 py-2 rounded-xl border border-brand-border bg-white text-brand-text text-xs appearance-none">
-                    <option value="">Unassigned</option>
-                    {editAssign.assignedType === 'team'
-                      ? INITIAL_TEAMS.map(t => <option key={t.id} value={t.name}>{t.name}</option>)
-                      : INITIAL_MEMBERS.map(m => <option key={m.id} value={m.name}>{m.name}</option>)
-                    }
-                  </select>
+                  <Dropdown options={ASSIGN_TYPE_OPTIONS} value={editAssign.assignedType} onChange={(v) => setEditAssign(a => ({ ...a, assignedType: v as 'team' | 'user' }))} size="sm" />
+                  <Dropdown
+                    options={[
+                      { value: '', label: 'Unassigned' },
+                      ...(editAssign.assignedType === 'team'
+                        ? INITIAL_TEAMS.map(t => ({ value: t.name, label: t.name }))
+                        : INITIAL_MEMBERS.map(m => ({ value: m.name, label: m.name })))
+                    ]}
+                    value={editAssign.assignedTo}
+                    onChange={(v) => setEditAssign(a => ({ ...a, assignedTo: v }))}
+                    size="sm"
+                  />
                   <div className="flex gap-2">
                     <button onClick={() => handleSaveAssign(did.id)} className="flex-1 py-1.5 rounded-full bg-yuzu-400 text-white text-xs font-semibold">Save</button>
                     <button onClick={() => setEditingId(null)} className="flex-1 py-1.5 rounded-full border border-brand-border text-xs text-brand-text-secondary">Cancel</button>
@@ -951,16 +989,19 @@ function NumbersTab() {
               <div className="flex-1 px-6 py-6 space-y-5 overflow-y-auto">
                 <div><label className="block text-sm font-medium text-brand-text mb-1.5">Phone number</label><input type="tel" placeholder="+971 4 XXX XXXX" value={addForm.number} onChange={(e) => setAddForm(f => ({ ...f, number: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm font-mono placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" required autoFocus /></div>
                 <div><label className="block text-sm font-medium text-brand-text mb-1.5">Label</label><input type="text" placeholder="e.g. Main Line, Sales Hotline" value={addForm.label} onChange={(e) => setAddForm(f => ({ ...f, label: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition" /></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Country</label><select value={addForm.country} onChange={(e) => setAddForm(f => ({ ...f, country: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none"><option>UAE</option><option>KSA</option><option>Bahrain</option><option>Qatar</option><option>Oman</option><option>Kuwait</option></select></div>
-                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Assign to</label><select value={addForm.assignedType} onChange={(e) => setAddForm(f => ({ ...f, assignedType: e.target.value as 'team' | 'user' }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none"><option value="team">Team</option><option value="user">User</option></select></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Country</label><Dropdown options={COUNTRY_OPTIONS} value={addForm.country} onChange={(v) => setAddForm(f => ({ ...f, country: v }))} /></div>
+                <div><label className="block text-sm font-medium text-brand-text mb-1.5">Assign to</label><Dropdown options={ASSIGN_TYPE_OPTIONS} value={addForm.assignedType} onChange={(v) => setAddForm(f => ({ ...f, assignedType: v as 'team' | 'user' }))} /></div>
                 <div><label className="block text-sm font-medium text-brand-text mb-1.5">{addForm.assignedType === 'team' ? 'Select team' : 'Select user'}</label>
-                  <select value={addForm.assignedTo} onChange={(e) => setAddForm(f => ({ ...f, assignedTo: e.target.value }))} className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text text-sm appearance-none">
-                    <option value="">Leave unassigned</option>
-                    {addForm.assignedType === 'team'
-                      ? INITIAL_TEAMS.map(t => <option key={t.id} value={t.name}>{t.name}</option>)
-                      : INITIAL_MEMBERS.map(m => <option key={m.id} value={m.name}>{m.name}</option>)
-                    }
-                  </select>
+                  <Dropdown
+                    options={[
+                      { value: '', label: 'Leave unassigned' },
+                      ...(addForm.assignedType === 'team'
+                        ? INITIAL_TEAMS.map(t => ({ value: t.name, label: t.name }))
+                        : INITIAL_MEMBERS.map(m => ({ value: m.name, label: m.name })))
+                    ]}
+                    value={addForm.assignedTo}
+                    onChange={(v) => setAddForm(f => ({ ...f, assignedTo: v }))}
+                  />
                 </div>
                 <div className="bg-yuzu-50 border border-yuzu-300/30 rounded-xl p-3"><p className="text-xs text-yuzu-900">DID numbers are used for inbound call routing. Assign to a team for group routing or to a user for direct lines.</p></div>
               </div>

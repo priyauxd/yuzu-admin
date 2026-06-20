@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
+import Dropdown from '../../components/Dropdown'
 
 const STEP_LABELS = ['Account', 'Verify', 'Setup', 'Plan', 'Done']
 
@@ -87,37 +88,31 @@ export default function Profile() {
             {errors.orgName && <p className="mt-1 text-sm text-red-500">{errors.orgName}</p>}
           </div>
           <div>
-            <label htmlFor="role" className="block text-sm font-medium text-brand-text-secondary mb-1.5">
+            <label className="block text-sm font-medium text-brand-text-secondary mb-1.5">
               Your role <span className="text-red-500">*</span>
             </label>
-            <select
+            <Dropdown
               id="role"
+              options={ROLES}
               value={form.role}
-              onChange={(e) => update('role', e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
-            >
-              {ROLES.map((r) => (
-                <option key={r.value} value={r.value}>{r.label}</option>
-              ))}
-            </select>
+              onChange={(v) => update('role', v)}
+              error={!!errors.role}
+            />
             {errors.role && <p className="mt-1 text-sm text-red-500">{errors.role}</p>}
           </div>
         </div>
 
         <div>
-          <label htmlFor="industry" className="block text-sm font-medium text-brand-text-secondary mb-1.5">
+          <label className="block text-sm font-medium text-brand-text-secondary mb-1.5">
             Industry <span className="text-red-500">*</span>
           </label>
-          <select
+          <Dropdown
             id="industry"
+            options={INDUSTRIES}
             value={form.industry}
-            onChange={(e) => update('industry', e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
-          >
-            {INDUSTRIES.map((ind) => (
-              <option key={ind.value} value={ind.value}>{ind.label}</option>
-            ))}
-          </select>
+            onChange={(v) => update('industry', v)}
+            error={!!errors.industry}
+          />
           {errors.industry && <p className="mt-1 text-sm text-red-500">{errors.industry}</p>}
         </div>
 

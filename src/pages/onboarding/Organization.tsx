@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, ChevronLeft } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
+import Dropdown from '../../components/Dropdown'
 
 const STEP_LABELS = ['Account', 'Verify', 'Business', 'Organization', 'Profile', 'Plan', 'Payment', 'Workspace']
 
@@ -56,19 +57,16 @@ export default function Organization() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="customerType" className="block text-sm font-medium text-brand-text-secondary mb-1.5">
+          <label className="block text-sm font-medium text-brand-text-secondary mb-1.5">
             Who are your main customers? <span className="text-red-500">*</span>
           </label>
-          <select
+          <Dropdown
             id="customerType"
+            options={CUSTOMER_TYPES}
             value={customerType}
-            onChange={(e) => { setCustomerType(e.target.value); setErrors({}) }}
-            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
-          >
-            {CUSTOMER_TYPES.map((ct) => (
-              <option key={ct.value} value={ct.value}>{ct.label}</option>
-            ))}
-          </select>
+            onChange={(v) => { setCustomerType(v); setErrors({}) }}
+            error={!!errors.customerType}
+          />
           {errors.customerType && <p className="mt-1 text-sm text-red-500">{errors.customerType}</p>}
         </div>
 

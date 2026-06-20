@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, ChevronLeft, Shield } from 'lucide-react'
 import OnboardingLayout from '../../components/OnboardingLayout'
+import Dropdown from '../../components/Dropdown'
 
 const STEP_LABELS = ['Account', 'Verify', 'Business', 'Organization', 'Profile', 'Plan', 'Payment', 'Workspace']
 
@@ -63,19 +64,16 @@ export default function SetupProfile() {
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label htmlFor="role" className="block text-sm font-medium text-brand-text-secondary mb-1.5">
+          <label className="block text-sm font-medium text-brand-text-secondary mb-1.5">
             What is your role at your organization? <span className="text-red-500">*</span>
           </label>
-          <select
+          <Dropdown
             id="role"
+            options={ROLES}
             value={form.role}
-            onChange={(e) => update('role', e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
-          >
-            {ROLES.map((r) => (
-              <option key={r.value} value={r.value}>{r.label}</option>
-            ))}
-          </select>
+            onChange={(v) => update('role', v)}
+            error={!!errors.role}
+          />
           {errors.role && <p className="mt-1 text-sm text-red-500">{errors.role}</p>}
         </div>
 
@@ -104,19 +102,15 @@ export default function SetupProfile() {
         </div>
 
         <div>
-          <label htmlFor="referral" className="block text-sm font-medium text-brand-text-secondary mb-1.5">
+          <label className="block text-sm font-medium text-brand-text-secondary mb-1.5">
             How did you hear about us?
           </label>
-          <select
+          <Dropdown
             id="referral"
+            options={REFERRAL_SOURCES}
             value={form.referral}
-            onChange={(e) => update('referral', e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-brand-border bg-white text-brand-text focus:outline-none focus:ring-2 focus:ring-yuzu-400 focus:border-transparent transition appearance-none"
-          >
-            {REFERRAL_SOURCES.map((r) => (
-              <option key={r.value} value={r.value}>{r.label}</option>
-            ))}
-          </select>
+            onChange={(v) => update('referral', v)}
+          />
         </div>
 
         <div className="flex items-center justify-between pt-4">
